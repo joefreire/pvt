@@ -10,6 +10,6 @@
                             </li>
                             <li class="UpSIH"><a href="{{ route('sih.relatorio.pares') }}">Relatório Pares SIH</a> </li>
                             <li class="UpSIM"><a href="{{ route('resultado.geral') }}">Relatório Geral</a> </li>
-                            <li class="UpSIM"><a href="{{ route('resultado.indicadores') }}">Indicadores Finais</a> </li>
+                            <li class="UpSIM"><a href="{{ route('resultado.indicadores') }}">Relatório de Indicadores Finais</a> </li>
                         </ul>
                     </li>

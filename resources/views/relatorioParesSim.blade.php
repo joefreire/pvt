@@ -33,7 +33,7 @@
 
 <div class="col-md-12">  
 	<div class="page-header">
-		<h3>Relatório Linkagem SIM</h3>
+		<h3>Relatório Pares SIM</h3>
 	</div>
 	<div class="form-inline">        
 		<div class="form-group">  

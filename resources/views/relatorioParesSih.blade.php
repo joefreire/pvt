@@ -33,7 +33,7 @@
 
 <div class="col-md-12">  
 	<div class="page-header">
-		<h3>Relatório Linkagem SIH</h3>
+		<h3>Relatório Pares SIH</h3>
 	</div>
 	<div class="form-inline">        
 		<div class="form-group">  
