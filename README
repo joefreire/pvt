@@ -1,0 +1,16 @@
+Plataforma para linkagem de dados 
+
+Instruções para instalação
+
+PHP 7.2 +
+PGSQL 10.2+
+
+COMPOSER INSTALL
+
+criação da estrutura do banco de dados
+php artisan migrate
+
+os jobs são executados em filas, precisam ser iniciados no servidor para linux pode utilizar o supervisor para gerenciar a fila
+mais informações podem ser obtidas em https://laravel.com/docs/7.x/queues
+
+
