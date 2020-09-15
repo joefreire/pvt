@@ -1,0 +1,529 @@
+.dataTables_processing{,
+  z-index: 999!important;
+}
+.div-grupo-planos-empresa {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: #9f9f9f;
+  font-size: 15px;
+}
+.div-grupo-planos-empresa .package {
+  box-sizing: border-box;
+  height: 380px;
+  border: 3px solid #e8e8e8;
+  border-radius: 7px;
+  display: inline-block;
+  padding: 24px;
+  text-align: center;
+  float: left;
+  transition: margin-top 0.5s linear;
+  position: relative;
+  margin-bottom: 2%;
+}
+@media(max-width: 770px) {
+  .div-grupo-planos-empresa .package {
+    margin-bottom: 2%;
+  }
+}
+@media(min-width: 770px) {
+  .div-grupo-planos-empresa .package {
+/*    margin-left: 7%;*/
+  }
+}
+/*.div-grupo-planos-empresa .package:hover {
+  margin-top: -30px;
+  transition: margin-top 0.3s linear;
+}*/
+.div-grupo-planos-empresa .name {
+  color: #565656;
+  font-weight: 300;
+  font-size: 3rem;
+  margin-top: -5px;
+}
+.div-grupo-planos-empresa .price {
+  margin-top: 7px;
+  font-weight: bold;
+}
+
+.div-grupo-planos-empresa hr {
+  background-color: #dedede;
+  border: none;
+  height: 1px;
+}
+.div-grupo-planos-empresa .trial {
+  font-size: .9rem;
+  font-weight: 600;
+  padding: 2px 21px 2px 21px;
+  color: #ff851b;
+  border: 1px solid #e4e4e4;
+  display: inline-block;
+  border-radius: 15px;
+  background-color: white;
+  position: relative;
+  bottom: -20px;
+}
+.div-grupo-planos-empresa ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  margin-top: 29px;
+}
+.div-grupo-planos-empresa li {
+  margin-bottom: 15px;
+}
+.div-grupo-planos-empresa .checkIcon {
+  font-family: "FontAwesome";
+  content: "\f00c";
+}
+.div-grupo-planos-empresa li::before {
+  font-family: "FontAwesome";
+  content: "\f00c";
+  font-size: 1.3rem;
+  color: #ff851b;
+  margin-right: 3px;
+}
+.div-grupo-planos-empresa .brilliant {
+  border-color: #ff851b;
+}
+/* Triangle */
+.div-grupo-planos-empresa .brilliant::before {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 64px 64px 0 0;
+  border-color: #ff851b transparent transparent transparent;
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+}
+.div-grupo-planos-empresa .brilliant::after {
+  font-family: "FontAwesome";
+  content: "\f00c";
+  color: white;
+  position: absolute;
+  left: 9px;
+  top: 6px;
+  text-shadow: 0 0 2px #37c5b6;
+  font-size: 1.4rem;
+}
+
+
+.creditCardForm label {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.pl-ziro { padding-left: 0px; }
+.creditCardForm .heading h1 {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: #4c4e56;
+}
+.creditCardForm .payment {
+/*  float: left;*/
+  font-size: 18px;
+  padding: 10px 25px;
+  position: relative;
+}
+.creditCardForm .payment .form-group {
+  float: left;
+  margin-bottom: 15px;
+}
+.creditCardForm .payment .form-control {
+  line-height: 40px;
+  padding: 0 16px;
+}
+.creditCardForm .owner {
+  width: 63%;
+  margin-right: 10px;
+}
+.creditCardForm .CVV {
+  width: 35%;
+  margin-left: 0px!important;
+}
+.creditCardForm #card-number-field {
+  width: 63%;
+  margin-right: 3%;
+}
+.creditCardForm #expiration-date {
+  width: 20%;
+  margin-right: 3%;
+}
+.creditCardForm #cpf_titular_field {
+  width: 30%;
+  margin-right: 3%;
+}
+.creditCardForm #credit_cards {
+  width: 45%;
+  margin-top: 25px;
+  text-align: right;
+}
+.creditCardForm #pay-now {
+  width: 100%;
+  margin-top: 25px;
+}
+.creditCardForm .payment .btn {
+  width: 100%;
+  margin-top: 3px;
+  font-size: 24px;
+  background-color: #f39c12;
+  color: white;
+}
+.creditCardForm .payment select {
+  padding: 10px;
+  margin-right: 15px;
+}
+.transparent {
+  opacity: 0.2;
+}
+@media(max-width: 650px) {
+  .creditCardForm .owner,
+  .creditCardForm .CVV,
+  .creditCardForm #expiration-date,
+  .creditCardForm #card-number-field,
+  .creditCardForm #cpf_titular_field,
+  .creditCardForm #credit_cards {
+    width: 100%;
+  }
+  .creditCardForm #credit_cards {
+    text-align: left;
+  }
+}
+.user-panel>.image>img {
+  min-height: 45px;
+}
+
+.table-responsive {
+  min-height: .01%;
+  overflow-x: unset;!important
+}
+.sidebar-collapse .logo-sidebar {
+  display: none;
+}
+.profile-pic {
+  margin: auto;
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: multiply;
+  vertical-align: middle;
+  text-align: center;
+  color: transparent;
+  transition: all .3s ease;
+  text-decoration: none;
+}
+
+.profile-pic:hover {
+  background-color: rgba(0,0,0,.5);
+  z-index: 10000;
+  color: #fff;
+  transition: all .3s ease;
+  text-decoration: none;
+}
+
+.profile-pic span {
+  display: inline-block;
+  padding-top: 4.5em;
+  padding-bottom: 4.5em;
+}
+.profile-usertitle-name {
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 7px;
+}
+
+.container-camera{
+  padding: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.container-app{
+  max-width: 1000px;
+  margin: 15px auto;
+  padding: 20px;
+  background-color: #efefef;
+}
+#start-camera{
+  border-radius: 3px;
+  max-width: 400px;
+  color: #fff;
+  background-color: #448AFF;
+  text-decoration: none;
+  padding: 15px;
+  opacity: 0.8;
+  margin: 50px auto;
+  text-align: center;
+}
+#start-camera_modal{
+  border-radius: 3px;
+  max-width: 400px;
+  color: #fff;
+  background-color: #448AFF;
+  text-decoration: none;
+  padding: 15px;
+  opacity: 0.8;
+  margin: 8px auto;
+  text-align: center;
+}
+.app{
+  display: none;
+  width: 100%;
+  position: relative;
+}
+
+.app video#camera-stream{
+  display: none;
+  width: 100%;
+}
+
+.app img#snap{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  display: none;
+}
+
+.app #error-message{
+  width: 100%;
+  background-color: #ccc;
+  color: #9b9b9b;
+  font-size: 28px;
+  padding: 200px 100px;
+  text-align: center;
+  display: none;
+}
+
+.app .controls{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 30px;
+  display: none;
+}
+
+.app .controls a{
+  border-radius: 50%;
+  color: #fff;
+  background-color: #111;
+  text-decoration: none;
+  padding: 15px;
+  line-height: 0;
+  opacity: 0.7;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app .controls a:hover{
+  opacity: 1;
+}
+
+.app .controls a.disabled{
+  background-color: #555;
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.app .controls a.disabled:hover{
+  opacity: 0.5;
+}
+
+.app .controls a i{
+  font-size: 18px;
+}
+
+.app .controls #take-photo i{
+  font-size: 32px;
+}
+
+.app canvas{
+  display: none;
+}
+
+.app video#camera-stream.visible,
+.app img#snap.visible,
+.app #error-message.visible
+{
+  display: block;
+}
+
+.app .controls.visible{
+  display: flex;
+}
+
+@media(max-width: 1000px){
+  .container{
+    margin: 40px;
+  }
+
+  .app #start-camera.visible{
+    display: block;
+  }
+
+  .app .controls a i{
+    font-size: 16px;
+  }
+
+  .app .controls #take-photo i{
+    font-size: 24px;
+  }
+}
+
+
+@media(max-width: 600px){
+  .container{
+    margin: 10px;
+  }
+
+  .app #error-message{
+    padding: 80px 50px;
+    font-size: 18px;
+  }
+
+  .app .controls a i{
+    font-size: 12px;
+  }
+
+  .app .controls #take-photo i{
+    font-size: 18px;
+  }
+}
+a#exit {
+  position: absolute;
+  top: 24px;
+  right: 27px;
+}
+/* Absolute Center Spinner */
+#loading {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+#loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+#loading:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+#loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,2355 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)http://localhost:8000/user-empresa/lista-candidatos -->
+<html lang="pt-br" style="height: auto; min-height: 100%;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="ckr6M9art1bnAD1KmubEJhQK6tPWLBK650dGC4Am">
+
+    <title>Live Marketing</title>
+
+    <link href="./Live Marketing_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./Live Marketing_files/font-awesome.min.css" rel="stylesheet">
+    
+    <link href="./Live Marketing_files/toastr.css" rel="stylesheet">
+    <link href="http://localhost:8000/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="./Live Marketing_files/sweetalert2.min.css">
+<link rel="stylesheet" href="./Live Marketing_files/dataTables.checkboxes.css">
+<link rel="stylesheet" href="./Live Marketing_files/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="./Live Marketing_files/buttons.dataTables.min.css">
+<link rel="stylesheet" href="./Live Marketing_files/select2.min.css">
+<style type="text/css">
+td.details-control {
+	background: url('http://localhost:8000/images/details_open.png') no-repeat center center;
+	cursor: pointer;
+}
+tr.shown td.details-control {
+	background: url('http://localhost:8000/images/details_close.png') no-repeat center center;
+}
+div.dt-buttons {
+	float: right;
+}
+</style>
+    
+    <link href="./Live Marketing_files/AdminLTE.min.css" rel="stylesheet">
+    <link href="./Live Marketing_files/_all-skins.min.css" rel="stylesheet">
+    <link href="./Live Marketing_files/livemkt.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./Live Marketing_files/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+<style type="text/css">body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+  overflow-y: hidden; }
+
+body.swal2-toast-shown {
+  overflow-y: auto; }
+  body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-icon {
+      margin: 0 0 15px; }
+    body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-buttonswrapper {
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      -ms-flex-item-align: stretch;
+          align-self: stretch;
+      -webkit-box-pack: end;
+          -ms-flex-pack: end;
+              justify-content: flex-end; }
+    body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-loading {
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+    body.swal2-toast-shown.swal2-has-input > .swal2-container > .swal2-toast .swal2-input {
+      height: 32px;
+      font-size: 14px;
+      margin: 5px auto; }
+  body.swal2-toast-shown > .swal2-container {
+    position: fixed;
+    background-color: transparent; }
+    body.swal2-toast-shown > .swal2-container.swal2-shown {
+      background-color: transparent; }
+    body.swal2-toast-shown > .swal2-container.swal2-top {
+      top: 0;
+      left: 50%;
+      bottom: auto;
+      right: auto;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
+    body.swal2-toast-shown > .swal2-container.swal2-top-right {
+      top: 0;
+      left: auto;
+      bottom: auto;
+      right: 0; }
+    body.swal2-toast-shown > .swal2-container.swal2-top-left {
+      top: 0;
+      left: 0;
+      bottom: auto;
+      right: auto; }
+    body.swal2-toast-shown > .swal2-container.swal2-center-left {
+      top: 50%;
+      left: 0;
+      bottom: auto;
+      right: auto;
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%); }
+    body.swal2-toast-shown > .swal2-container.swal2-center {
+      top: 50%;
+      left: 50%;
+      bottom: auto;
+      right: auto;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%); }
+    body.swal2-toast-shown > .swal2-container.swal2-center-right {
+      top: 50%;
+      left: auto;
+      bottom: auto;
+      right: 0;
+      -webkit-transform: translateY(-50%);
+              transform: translateY(-50%); }
+    body.swal2-toast-shown > .swal2-container.swal2-bottom-left {
+      top: auto;
+      left: 0;
+      bottom: 0;
+      right: auto; }
+    body.swal2-toast-shown > .swal2-container.swal2-bottom {
+      top: auto;
+      left: 50%;
+      bottom: 0;
+      right: auto;
+      -webkit-transform: translateX(-50%);
+              transform: translateX(-50%); }
+    body.swal2-toast-shown > .swal2-container.swal2-bottom-right {
+      top: auto;
+      left: auto;
+      bottom: 0;
+      right: 0; }
+
+body.swal2-iosfix {
+  position: fixed;
+  left: 0;
+  right: 0; }
+
+body.swal2-no-backdrop > .swal2-shown {
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  background-color: transparent; }
+  body.swal2-no-backdrop > .swal2-shown > .swal2-modal {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-top {
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-top-left {
+    top: 0;
+    left: 0; }
+  body.swal2-no-backdrop > .swal2-shown.swal2-top-right {
+    top: 0;
+    right: 0; }
+  body.swal2-no-backdrop > .swal2-shown.swal2-center {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-center-left {
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-center-right {
+    top: 50%;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-bottom {
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%); }
+  body.swal2-no-backdrop > .swal2-shown.swal2-bottom-left {
+    bottom: 0;
+    left: 0; }
+  body.swal2-no-backdrop > .swal2-shown.swal2-bottom-right {
+    bottom: 0;
+    right: 0; }
+
+.swal2-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: fixed;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: 1060; }
+  .swal2-container.swal2-top {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start; }
+  .swal2-container.swal2-top-left {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; }
+  .swal2-container.swal2-top-right {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+  .swal2-container.swal2-center {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  .swal2-container.swal2-center-left {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; }
+  .swal2-container.swal2-center-right {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+  .swal2-container.swal2-bottom {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end; }
+  .swal2-container.swal2-bottom-left {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start; }
+  .swal2-container.swal2-bottom-right {
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
+  .swal2-container.swal2-grow-fullscreen > .swal2-modal {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -ms-flex-item-align: stretch;
+        align-self: stretch;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .swal2-container.swal2-grow-row > .swal2-modal {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  .swal2-container.swal2-grow-column {
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; }
+    .swal2-container.swal2-grow-column.swal2-top, .swal2-container.swal2-grow-column.swal2-center, .swal2-container.swal2-grow-column.swal2-bottom {
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center; }
+    .swal2-container.swal2-grow-column.swal2-top-left, .swal2-container.swal2-grow-column.swal2-center-left, .swal2-container.swal2-grow-column.swal2-bottom-left {
+      -webkit-box-align: start;
+          -ms-flex-align: start;
+              align-items: flex-start; }
+    .swal2-container.swal2-grow-column.swal2-top-right, .swal2-container.swal2-grow-column.swal2-center-right, .swal2-container.swal2-grow-column.swal2-bottom-right {
+      -webkit-box-align: end;
+          -ms-flex-align: end;
+              align-items: flex-end; }
+    .swal2-container.swal2-grow-column > .swal2-modal {
+      display: -webkit-box !important;
+      display: -ms-flexbox !important;
+      display: flex !important;
+      -webkit-box-flex: 1;
+          -ms-flex: 1;
+              flex: 1;
+      -ms-flex-line-pack: center;
+          align-content: center;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+  .swal2-container:not(.swal2-top):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-left):not(.swal2-bottom-right) > .swal2-modal {
+    margin: auto; }
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .swal2-container .swal2-modal {
+      margin: 0 !important; } }
+  .swal2-container.swal2-fade {
+    -webkit-transition: background-color .1s;
+    transition: background-color .1s; }
+  .swal2-container.swal2-shown {
+    background-color: rgba(0, 0, 0, 0.4); }
+
+.swal2-popup {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  border-radius: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: none;
+  position: relative;
+  max-width: 100%; }
+  .swal2-popup.swal2-toast {
+    width: 300px;
+    padding: 0 15px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    overflow-y: hidden;
+    -webkit-box-shadow: 0 0 10px #d9d9d9;
+            box-shadow: 0 0 10px #d9d9d9; }
+    .swal2-popup.swal2-toast .swal2-title {
+      max-width: 300px;
+      font-size: 16px;
+      text-align: left; }
+    .swal2-popup.swal2-toast .swal2-content {
+      font-size: 14px;
+      text-align: left; }
+    .swal2-popup.swal2-toast .swal2-icon {
+      width: 32px;
+      min-width: 32px;
+      height: 32px;
+      margin: 0 15px 0 0; }
+      .swal2-popup.swal2-toast .swal2-icon.swal2-success .swal2-success-ring {
+        width: 32px;
+        height: 32px; }
+      .swal2-popup.swal2-toast .swal2-icon.swal2-info, .swal2-popup.swal2-toast .swal2-icon.swal2-warning, .swal2-popup.swal2-toast .swal2-icon.swal2-question {
+        font-size: 26px;
+        line-height: 32px; }
+      .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^='swal2-x-mark-line'] {
+        top: 14px;
+        width: 22px; }
+        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^='swal2-x-mark-line'][class$='left'] {
+          left: 5px; }
+        .swal2-popup.swal2-toast .swal2-icon.swal2-error [class^='swal2-x-mark-line'][class$='right'] {
+          right: 5px; }
+    .swal2-popup.swal2-toast .swal2-buttonswrapper {
+      margin: 0 0 0 5px; }
+    .swal2-popup.swal2-toast .swal2-styled {
+      margin: 0 0 0 5px;
+      padding: 5px 10px; }
+      .swal2-popup.swal2-toast .swal2-styled:focus {
+        -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(50, 100, 150, 0.4);
+                box-shadow: 0 0 0 1px #fff, 0 0 0 2px rgba(50, 100, 150, 0.4); }
+    .swal2-popup.swal2-toast .swal2-validationerror {
+      width: 100%;
+      margin: 5px -20px; }
+    .swal2-popup.swal2-toast .swal2-success {
+      border-color: #a5dc86; }
+      .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-circular-line'] {
+        border-radius: 50%;
+        position: absolute;
+        width: 32px;
+        height: 64px;
+        -webkit-transform: rotate(45deg);
+                transform: rotate(45deg); }
+        .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-circular-line'][class$='left'] {
+          border-radius: 64px 0 0 64px;
+          top: -4px;
+          left: -15px;
+          -webkit-transform: rotate(-45deg);
+                  transform: rotate(-45deg);
+          -webkit-transform-origin: 32px 32px;
+                  transform-origin: 32px 32px; }
+        .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-circular-line'][class$='right'] {
+          border-radius: 0 64px 64px 0;
+          top: -5px;
+          left: 14px;
+          -webkit-transform-origin: 0 32px;
+                  transform-origin: 0 32px; }
+      .swal2-popup.swal2-toast .swal2-success .swal2-success-ring {
+        width: 32px;
+        height: 32px; }
+      .swal2-popup.swal2-toast .swal2-success .swal2-success-fix {
+        width: 7px;
+        height: 90px;
+        left: 28px;
+        top: 8px; }
+      .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-line'] {
+        height: 5px; }
+        .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-line'][class$='tip'] {
+          width: 12px;
+          left: 3px;
+          top: 18px; }
+        .swal2-popup.swal2-toast .swal2-success [class^='swal2-success-line'][class$='long'] {
+          width: 22px;
+          right: 3px;
+          top: 15px; }
+    .swal2-popup.swal2-toast .swal2-animate-success-line-tip {
+      -webkit-animation: animate-toast-success-tip .75s;
+              animation: animate-toast-success-tip .75s; }
+    .swal2-popup.swal2-toast .swal2-animate-success-line-long {
+      -webkit-animation: animate-toast-success-long .75s;
+              animation: animate-toast-success-long .75s; }
+  .swal2-popup:focus {
+    outline: none; }
+  .swal2-popup.swal2-loading {
+    overflow-y: hidden; }
+  .swal2-popup .swal2-title {
+    color: #595959;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: none;
+    position: relative;
+    margin: 0 0 .4em;
+    padding: 0;
+    display: block;
+    word-wrap: break-word; }
+  .swal2-popup .swal2-buttonswrapper {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: 15px; }
+    .swal2-popup .swal2-buttonswrapper:not(.swal2-loading) .swal2-styled[disabled] {
+      opacity: .4;
+      cursor: no-drop; }
+    .swal2-popup .swal2-buttonswrapper.swal2-loading .swal2-styled.swal2-confirm {
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      border: 4px solid transparent;
+      border-color: transparent;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+      margin: 7.5px;
+      vertical-align: top;
+      background-color: transparent !important;
+      color: transparent;
+      cursor: default;
+      border-radius: 100%;
+      -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
+              animation: rotate-loading 1.5s linear 0s infinite normal;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none; }
+    .swal2-popup .swal2-buttonswrapper.swal2-loading .swal2-styled.swal2-cancel {
+      margin-left: 30px;
+      margin-right: 30px; }
+    .swal2-popup .swal2-buttonswrapper.swal2-loading :not(.swal2-styled).swal2-confirm::after {
+      display: inline-block;
+      content: '';
+      margin-left: 5px;
+      vertical-align: -1px;
+      height: 15px;
+      width: 15px;
+      border: 3px solid #999999;
+      -webkit-box-shadow: 1px 1px 1px #fff;
+              box-shadow: 1px 1px 1px #fff;
+      border-right-color: transparent;
+      border-radius: 50%;
+      -webkit-animation: rotate-loading 1.5s linear 0s infinite normal;
+              animation: rotate-loading 1.5s linear 0s infinite normal; }
+  .swal2-popup .swal2-styled {
+    border: 0;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 500;
+    margin: 15px 5px 0;
+    padding: 10px 32px; }
+    .swal2-popup .swal2-styled:focus {
+      outline: none;
+      -webkit-box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4);
+              box-shadow: 0 0 0 2px #fff, 0 0 0 4px rgba(50, 100, 150, 0.4); }
+  .swal2-popup .swal2-image {
+    margin: 20px auto;
+    max-width: 100%; }
+  .swal2-popup .swal2-close {
+    background: transparent;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    width: 38px;
+    height: 40px;
+    font-size: 36px;
+    line-height: 40px;
+    font-family: serif;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    cursor: pointer;
+    color: #cccccc;
+    -webkit-transition: color .1s ease;
+    transition: color .1s ease; }
+    .swal2-popup .swal2-close:hover {
+      color: #d55; }
+  .swal2-popup > .swal2-input,
+  .swal2-popup > .swal2-file,
+  .swal2-popup > .swal2-textarea,
+  .swal2-popup > .swal2-select,
+  .swal2-popup > .swal2-radio,
+  .swal2-popup > .swal2-checkbox {
+    display: none; }
+  .swal2-popup .swal2-content {
+    font-size: 18px;
+    text-align: center;
+    font-weight: 300;
+    position: relative;
+    float: none;
+    margin: 0;
+    padding: 0;
+    line-height: normal;
+    color: #545454;
+    word-wrap: break-word; }
+  .swal2-popup .swal2-input,
+  .swal2-popup .swal2-file,
+  .swal2-popup .swal2-textarea,
+  .swal2-popup .swal2-select,
+  .swal2-popup .swal2-radio,
+  .swal2-popup .swal2-checkbox {
+    margin: 20px auto; }
+  .swal2-popup .swal2-input,
+  .swal2-popup .swal2-file,
+  .swal2-popup .swal2-textarea {
+    width: 100%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-size: 18px;
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.06);
+    -webkit-transition: border-color .3s, -webkit-box-shadow .3s;
+    transition: border-color .3s, -webkit-box-shadow .3s;
+    transition: border-color .3s, box-shadow .3s;
+    transition: border-color .3s, box-shadow .3s, -webkit-box-shadow .3s; }
+    .swal2-popup .swal2-input.swal2-inputerror,
+    .swal2-popup .swal2-file.swal2-inputerror,
+    .swal2-popup .swal2-textarea.swal2-inputerror {
+      border-color: #f27474 !important;
+      -webkit-box-shadow: 0 0 2px #f27474 !important;
+              box-shadow: 0 0 2px #f27474 !important; }
+    .swal2-popup .swal2-input:focus,
+    .swal2-popup .swal2-file:focus,
+    .swal2-popup .swal2-textarea:focus {
+      outline: none;
+      border: 1px solid #b4dbed;
+      -webkit-box-shadow: 0 0 3px #c4e6f5;
+              box-shadow: 0 0 3px #c4e6f5; }
+    .swal2-popup .swal2-input::-webkit-input-placeholder,
+    .swal2-popup .swal2-file::-webkit-input-placeholder,
+    .swal2-popup .swal2-textarea::-webkit-input-placeholder {
+      color: #cccccc; }
+    .swal2-popup .swal2-input:-ms-input-placeholder,
+    .swal2-popup .swal2-file:-ms-input-placeholder,
+    .swal2-popup .swal2-textarea:-ms-input-placeholder {
+      color: #cccccc; }
+    .swal2-popup .swal2-input::-ms-input-placeholder,
+    .swal2-popup .swal2-file::-ms-input-placeholder,
+    .swal2-popup .swal2-textarea::-ms-input-placeholder {
+      color: #cccccc; }
+    .swal2-popup .swal2-input::placeholder,
+    .swal2-popup .swal2-file::placeholder,
+    .swal2-popup .swal2-textarea::placeholder {
+      color: #cccccc; }
+  .swal2-popup .swal2-range input {
+    float: left;
+    width: 80%; }
+  .swal2-popup .swal2-range output {
+    float: right;
+    width: 20%;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center; }
+  .swal2-popup .swal2-range input,
+  .swal2-popup .swal2-range output {
+    height: 43px;
+    line-height: 43px;
+    vertical-align: middle;
+    margin: 20px auto;
+    padding: 0; }
+  .swal2-popup .swal2-input {
+    height: 43px;
+    padding: 0 12px; }
+    .swal2-popup .swal2-input[type='number'] {
+      max-width: 150px; }
+  .swal2-popup .swal2-file {
+    font-size: 20px; }
+  .swal2-popup .swal2-textarea {
+    height: 108px;
+    padding: 12px; }
+  .swal2-popup .swal2-select {
+    color: #545454;
+    font-size: inherit;
+    padding: 5px 10px;
+    min-width: 40%;
+    max-width: 100%; }
+  .swal2-popup .swal2-radio {
+    border: 0; }
+    .swal2-popup .swal2-radio label:not(:first-child) {
+      margin-left: 20px; }
+    .swal2-popup .swal2-radio input,
+    .swal2-popup .swal2-radio span {
+      vertical-align: middle; }
+    .swal2-popup .swal2-radio input {
+      margin: 0 3px 0 0; }
+  .swal2-popup .swal2-checkbox {
+    color: #545454; }
+    .swal2-popup .swal2-checkbox input,
+    .swal2-popup .swal2-checkbox span {
+      vertical-align: middle; }
+  .swal2-popup .swal2-validationerror {
+    background-color: #f0f0f0;
+    margin: 0 -20px;
+    overflow: hidden;
+    padding: 10px;
+    color: gray;
+    font-size: 16px;
+    font-weight: 300;
+    display: none; }
+    .swal2-popup .swal2-validationerror::before {
+      content: '!';
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #ea7d7d;
+      color: #fff;
+      line-height: 24px;
+      text-align: center;
+      margin-right: 10px; }
+
+@supports (-ms-accelerator: true) {
+  .swal2-range input {
+    width: 100% !important; }
+  .swal2-range output {
+    display: none; } }
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .swal2-range input {
+    width: 100% !important; }
+  .swal2-range output {
+    display: none; } }
+
+.swal2-icon {
+  width: 80px;
+  height: 80px;
+  border: 4px solid transparent;
+  border-radius: 50%;
+  margin: 20px auto 30px;
+  padding: 0;
+  position: relative;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+  cursor: default;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+  .swal2-icon.swal2-error {
+    border-color: #f27474; }
+    .swal2-icon.swal2-error .swal2-x-mark {
+      position: relative;
+      display: block; }
+    .swal2-icon.swal2-error [class^='swal2-x-mark-line'] {
+      position: absolute;
+      height: 5px;
+      width: 47px;
+      background-color: #f27474;
+      display: block;
+      top: 37px;
+      border-radius: 2px; }
+      .swal2-icon.swal2-error [class^='swal2-x-mark-line'][class$='left'] {
+        -webkit-transform: rotate(45deg);
+                transform: rotate(45deg);
+        left: 17px; }
+      .swal2-icon.swal2-error [class^='swal2-x-mark-line'][class$='right'] {
+        -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+        right: 16px; }
+  .swal2-icon.swal2-warning {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #f8bb86;
+    border-color: #facea8;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center; }
+  .swal2-icon.swal2-info {
+    font-family: 'Open Sans', sans-serif;
+    color: #3fc3ee;
+    border-color: #9de0f6;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center; }
+  .swal2-icon.swal2-question {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #87adbd;
+    border-color: #c9dae1;
+    font-size: 60px;
+    line-height: 80px;
+    text-align: center; }
+  .swal2-icon.swal2-success {
+    border-color: #a5dc86; }
+    .swal2-icon.swal2-success [class^='swal2-success-circular-line'] {
+      border-radius: 50%;
+      position: absolute;
+      width: 60px;
+      height: 120px;
+      -webkit-transform: rotate(45deg);
+              transform: rotate(45deg); }
+      .swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='left'] {
+        border-radius: 120px 0 0 120px;
+        top: -7px;
+        left: -33px;
+        -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+        -webkit-transform-origin: 60px 60px;
+                transform-origin: 60px 60px; }
+      .swal2-icon.swal2-success [class^='swal2-success-circular-line'][class$='right'] {
+        border-radius: 0 120px 120px 0;
+        top: -11px;
+        left: 30px;
+        -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg);
+        -webkit-transform-origin: 0 60px;
+                transform-origin: 0 60px; }
+    .swal2-icon.swal2-success .swal2-success-ring {
+      width: 80px;
+      height: 80px;
+      border: 4px solid rgba(165, 220, 134, 0.2);
+      border-radius: 50%;
+      -webkit-box-sizing: content-box;
+              box-sizing: content-box;
+      position: absolute;
+      left: -4px;
+      top: -4px;
+      z-index: 2; }
+    .swal2-icon.swal2-success .swal2-success-fix {
+      width: 7px;
+      height: 90px;
+      position: absolute;
+      left: 28px;
+      top: 8px;
+      z-index: 1;
+      -webkit-transform: rotate(-45deg);
+              transform: rotate(-45deg); }
+    .swal2-icon.swal2-success [class^='swal2-success-line'] {
+      height: 5px;
+      background-color: #a5dc86;
+      display: block;
+      border-radius: 2px;
+      position: absolute;
+      z-index: 2; }
+      .swal2-icon.swal2-success [class^='swal2-success-line'][class$='tip'] {
+        width: 25px;
+        left: 14px;
+        top: 46px;
+        -webkit-transform: rotate(45deg);
+                transform: rotate(45deg); }
+      .swal2-icon.swal2-success [class^='swal2-success-line'][class$='long'] {
+        width: 47px;
+        right: 8px;
+        top: 38px;
+        -webkit-transform: rotate(-45deg);
+                transform: rotate(-45deg); }
+
+.swal2-progresssteps {
+  font-weight: 600;
+  margin: 0 0 20px;
+  padding: 0; }
+  .swal2-progresssteps li {
+    display: inline-block;
+    position: relative; }
+  .swal2-progresssteps .swal2-progresscircle {
+    background: #3085d6;
+    border-radius: 2em;
+    color: #fff;
+    height: 2em;
+    line-height: 2em;
+    text-align: center;
+    width: 2em;
+    z-index: 20; }
+    .swal2-progresssteps .swal2-progresscircle:first-child {
+      margin-left: 0; }
+    .swal2-progresssteps .swal2-progresscircle:last-child {
+      margin-right: 0; }
+    .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep {
+      background: #3085d6; }
+      .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep ~ .swal2-progresscircle {
+        background: #add8e6; }
+      .swal2-progresssteps .swal2-progresscircle.swal2-activeprogressstep ~ .swal2-progressline {
+        background: #add8e6; }
+  .swal2-progresssteps .swal2-progressline {
+    background: #3085d6;
+    height: .4em;
+    margin: 0 -1px;
+    z-index: 10; }
+
+[class^='swal2'] {
+  -webkit-tap-highlight-color: transparent; }
+
+@-webkit-keyframes showSweetToast {
+  0% {
+    -webkit-transform: translateY(-10px) rotateZ(2deg);
+            transform: translateY(-10px) rotateZ(2deg);
+    opacity: 0; }
+  33% {
+    -webkit-transform: translateY(0) rotateZ(-2deg);
+            transform: translateY(0) rotateZ(-2deg);
+    opacity: .5; }
+  66% {
+    -webkit-transform: translateY(5px) rotateZ(2deg);
+            transform: translateY(5px) rotateZ(2deg);
+    opacity: .7; }
+  100% {
+    -webkit-transform: translateY(0) rotateZ(0);
+            transform: translateY(0) rotateZ(0);
+    opacity: 1; } }
+
+@keyframes showSweetToast {
+  0% {
+    -webkit-transform: translateY(-10px) rotateZ(2deg);
+            transform: translateY(-10px) rotateZ(2deg);
+    opacity: 0; }
+  33% {
+    -webkit-transform: translateY(0) rotateZ(-2deg);
+            transform: translateY(0) rotateZ(-2deg);
+    opacity: .5; }
+  66% {
+    -webkit-transform: translateY(5px) rotateZ(2deg);
+            transform: translateY(5px) rotateZ(2deg);
+    opacity: .7; }
+  100% {
+    -webkit-transform: translateY(0) rotateZ(0);
+            transform: translateY(0) rotateZ(0);
+    opacity: 1; } }
+
+@-webkit-keyframes hideSweetToast {
+  0% {
+    opacity: 1; }
+  33% {
+    opacity: .5; }
+  100% {
+    -webkit-transform: rotateZ(1deg);
+            transform: rotateZ(1deg);
+    opacity: 0; } }
+
+@keyframes hideSweetToast {
+  0% {
+    opacity: 1; }
+  33% {
+    opacity: .5; }
+  100% {
+    -webkit-transform: rotateZ(1deg);
+            transform: rotateZ(1deg);
+    opacity: 0; } }
+
+@-webkit-keyframes showSweetAlert {
+  0% {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7); }
+  45% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05); }
+  80% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes showSweetAlert {
+  0% {
+    -webkit-transform: scale(0.7);
+            transform: scale(0.7); }
+  45% {
+    -webkit-transform: scale(1.05);
+            transform: scale(1.05); }
+  80% {
+    -webkit-transform: scale(0.95);
+            transform: scale(0.95); }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@-webkit-keyframes hideSweetAlert {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0; } }
+
+@keyframes hideSweetAlert {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1; }
+  100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+    opacity: 0; } }
+
+.swal2-show {
+  -webkit-animation: showSweetAlert .3s;
+          animation: showSweetAlert .3s; }
+  .swal2-show.swal2-toast {
+    -webkit-animation: showSweetToast .5s;
+            animation: showSweetToast .5s; }
+  .swal2-show.swal2-noanimation {
+    -webkit-animation: none;
+            animation: none; }
+
+.swal2-hide {
+  -webkit-animation: hideSweetAlert .15s forwards;
+          animation: hideSweetAlert .15s forwards; }
+  .swal2-hide.swal2-toast {
+    -webkit-animation: hideSweetToast .2s forwards;
+            animation: hideSweetToast .2s forwards; }
+  .swal2-hide.swal2-noanimation {
+    -webkit-animation: none;
+            animation: none; }
+
+@-webkit-keyframes animate-success-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px; }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px; }
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px; }
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px; }
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 45px; } }
+
+@keyframes animate-success-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 19px; }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 19px; }
+  70% {
+    width: 50px;
+    left: -8px;
+    top: 37px; }
+  84% {
+    width: 17px;
+    left: 21px;
+    top: 48px; }
+  100% {
+    width: 25px;
+    left: 14px;
+    top: 45px; } }
+
+@-webkit-keyframes animate-success-long {
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px; }
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px; }
+  84% {
+    width: 55px;
+    right: 0;
+    top: 35px; }
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px; } }
+
+@keyframes animate-success-long {
+  0% {
+    width: 0;
+    right: 46px;
+    top: 54px; }
+  65% {
+    width: 0;
+    right: 46px;
+    top: 54px; }
+  84% {
+    width: 55px;
+    right: 0;
+    top: 35px; }
+  100% {
+    width: 47px;
+    right: 8px;
+    top: 38px; } }
+
+@-webkit-keyframes animate-toast-success-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 9px; }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 9px; }
+  70% {
+    width: 24px;
+    left: -4px;
+    top: 17px; }
+  84% {
+    width: 8px;
+    left: 10px;
+    top: 20px; }
+  100% {
+    width: 12px;
+    left: 3px;
+    top: 18px; } }
+
+@keyframes animate-toast-success-tip {
+  0% {
+    width: 0;
+    left: 1px;
+    top: 9px; }
+  54% {
+    width: 0;
+    left: 1px;
+    top: 9px; }
+  70% {
+    width: 24px;
+    left: -4px;
+    top: 17px; }
+  84% {
+    width: 8px;
+    left: 10px;
+    top: 20px; }
+  100% {
+    width: 12px;
+    left: 3px;
+    top: 18px; } }
+
+@-webkit-keyframes animate-toast-success-long {
+  0% {
+    width: 0;
+    right: 22px;
+    top: 26px; }
+  65% {
+    width: 0;
+    right: 22px;
+    top: 26px; }
+  84% {
+    width: 26px;
+    right: 0;
+    top: 15px; }
+  100% {
+    width: 22px;
+    right: 3px;
+    top: 15px; } }
+
+@keyframes animate-toast-success-long {
+  0% {
+    width: 0;
+    right: 22px;
+    top: 26px; }
+  65% {
+    width: 0;
+    right: 22px;
+    top: 26px; }
+  84% {
+    width: 26px;
+    right: 0;
+    top: 15px; }
+  100% {
+    width: 22px;
+    right: 3px;
+    top: 15px; } }
+
+@-webkit-keyframes rotatePlaceholder {
+  0% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+  5% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+  12% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg); }
+  100% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg); } }
+
+@keyframes rotatePlaceholder {
+  0% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+  5% {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+  12% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg); }
+  100% {
+    -webkit-transform: rotate(-405deg);
+            transform: rotate(-405deg); } }
+
+.swal2-animate-success-line-tip {
+  -webkit-animation: animate-success-tip .75s;
+          animation: animate-success-tip .75s; }
+
+.swal2-animate-success-line-long {
+  -webkit-animation: animate-success-long .75s;
+          animation: animate-success-long .75s; }
+
+.swal2-success.swal2-animate-success-icon .swal2-success-circular-line-right {
+  -webkit-animation: rotatePlaceholder 4.25s ease-in;
+          animation: rotatePlaceholder 4.25s ease-in; }
+
+@-webkit-keyframes animate-error-icon {
+  0% {
+    -webkit-transform: rotateX(100deg);
+            transform: rotateX(100deg);
+    opacity: 0; }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    opacity: 1; } }
+
+@keyframes animate-error-icon {
+  0% {
+    -webkit-transform: rotateX(100deg);
+            transform: rotateX(100deg);
+    opacity: 0; }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    opacity: 1; } }
+
+.swal2-animate-error-icon {
+  -webkit-animation: animate-error-icon .5s;
+          animation: animate-error-icon .5s; }
+
+@-webkit-keyframes animate-x-mark {
+  0% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0; }
+  50% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0; }
+  80% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+    margin-top: -6px; }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    margin-top: 0;
+    opacity: 1; } }
+
+@keyframes animate-x-mark {
+  0% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0; }
+  50% {
+    -webkit-transform: scale(0.4);
+            transform: scale(0.4);
+    margin-top: 26px;
+    opacity: 0; }
+  80% {
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+    margin-top: -6px; }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    margin-top: 0;
+    opacity: 1; } }
+
+.swal2-animate-x-mark {
+  -webkit-animation: animate-x-mark .5s;
+          animation: animate-x-mark .5s; }
+
+@-webkit-keyframes rotate-loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+
+@keyframes rotate-loading {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg); } }
+</style></head>
+
+        <body class="sidebar-mini skin-red modal-open" style="height: auto; min-height: 100%;">      
+                                <div class="wrapper fixed" style="height: auto; min-height: 100%;">
+                                                <header class="main-header">
+    <a href="http://localhost:8000/user-empresa/lista-candidatos" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Live Marketing Jobs</b></span>
+    </a>
+
+    <nav class="navbar navbar-static-top">
+        <a href="http://localhost:8000/user-empresa/lista-candidatos#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                                    <li>
+                        <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#novaSelecao"> Nova Seleção</button>
+                    </li>
+                
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <a href="http://localhost:8000/user-empresa/lista-candidatos#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="label label-success">4</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have 4 messages</li>
+                        <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+                                <li><!-- start message -->
+                                    <a href="http://localhost:8000/user-empresa/lista-candidatos#">
+                                        <div class="pull-left">
+                                            <img src="http://localhost:8000/user-empresa/lista-candidatos" class="img-circle" alt="User Image">
+                                        </div>
+                                        <h4>
+                                          Support Team
+                                          <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                        </h4>
+                                        <p>Why not buy a new awesome theme?</p>
+                                    </a>
+                                </li>                  
+                            </ul>
+                        </li>
+                        <li class="footer">
+                            <a href="http://localhost:8000/user-empresa/lista-candidatos#">See All Messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown user user-menu">
+                    <a href="http://localhost:8000/user-empresa/lista-candidatos#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <img name="user-avatar" src="./Live Marketing_files/default.jpg" class="user-image" alt="User Image">
+                                                <span class="hidden-xs"> teste</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                                                            <div class="profile-pic" style="background-image: url(&#39;http://localhost:8000/images/avatars/default.jpg&#39;)">
+                                    <span class="glyphicon glyphicon-camera"></span>
+                                    <span data-toggle="modal" data-target="#AltaraFotoPerfil">Alterar Imagem</span>
+                                </div>
+                          
+                            
+                                                        <p>
+                                teste
+                            </p>
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="http://localhost:8000/user-empresa/edit-count" class="btn btn-default btn-flat"><i class="fa fa-cogs"></i> Alterar Conta</a>
+                            </div>
+                            <div class="pull-right">
+                                <a class="btn btn-default btn-flat" href="http://localhost:8000/logout" onclick="event.preventDefault(); document.getElementById(&#39;logout-form-navbar&#39;).submit();">Sair</a>
+                                 <form id="logout-form-navbar" action="http://localhost:8000/logout" method="POST" style="display: none;">
+                                    <input type="hidden" name="_token" value="ckr6M9art1bnAD1KmubEJhQK6tPWLBK650dGC4Am">
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>                                <aside class="main-sidebar main-fixed">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" style="height: auto;">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="image">
+                                <div class="profile-pic" style="background-image: url(&#39;http://localhost:8000/images/avatars/default.jpg&#39;)">
+                    <span class="glyphicon glyphicon-camera"></span>
+                    <span data-toggle="modal" data-target="#AltaraFotoPerfil">Alterar Imagem</span>
+                </div>
+                
+                            </div>
+            <div class="profile-usertitle-name">
+                teste
+            </div>            
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu tree" data-widget="tree">
+        <li class="header">Menu</li>
+        <li class="treeview">
+            <a href="http://localhost:8000/user-empresa/lista-candidatos#">
+                <i class="fa fa-list" aria-hidden="true"></i> <span>Cadastros</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu" style="display: none;">
+                <li><a href="http://localhost:8000/user-empresa/empresas-coligadas" class="text-left default-text"><i class="fa fa-building-o"></i>Coligadas</a></li>
+                <li><a href="http://localhost:8000/user-empresa/empresas-clientes" class="text-left default-text"><i class="fa fa-building-o"></i>Clientes</a></li>
+                <li><a href="http://localhost:8000/user-empresa/users-cliente" class="text-left default-text"><i class="fa fa-users" aria-hidden="true"></i>Usuários Clientes</a></li>
+            </ul>
+        </li>
+        
+        <li>
+            <a href="http://localhost:8000/user-empresa/projetos" class="text-left default-text">
+                <i class="fa fa-line-chart" aria-hidden="true"></i> <span>Projetos/Jobs</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="http://localhost:8000/user-empresa/selecoes" class="text-left default-text">
+                <i class="fa fa-handshake-o" aria-hidden="true"></i> <span>Seleções</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="http://localhost:8000/user-empresa/vagas" class="text-left default-text">
+              <i class="fa fa-shopping-bag" aria-hidden="true"></i> <span>Gerenciar Vagas</span>
+          </a>
+        </li>
+        <li>
+            <a href="http://localhost:8000/user-empresa/lista" class="text-left default-text">
+                <i class="fa fa-user"></i> <span>Usuários</span>
+            </a>
+        </li>
+        <li>
+            <a href="http://localhost:8000/user-empresa/lista-candidatos#" style="background-color: rgb(0, 166, 90);"><i class="fa fa-star-o" style="color: rgb(255, 255, 255);"></i><span style="color: rgb(255, 255, 255);">Assinatura Premium</span></a>
+        </li>
+        <li>
+            <a href="http://localhost:8000/logout" onclick="event.preventDefault();
+            document.getElementById(&#39;logout-form&#39;).submit();">
+            <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i><span>Sair</span></a>
+            <form id="logout-form" action="http://localhost:8000/logout" method="POST" style="display: none;">
+                <input type="hidden" name="_token" value="ckr6M9art1bnAD1KmubEJhQK6tPWLBK650dGC4Am">
+            </form>
+        </li>      
+</ul></section>
+</aside>                                            
+                                <div class="content-wrapper" style="min-height: 469px;">
+                    <div class="container-fluid">
+                                                                                                
+                                            </div>
+                    <section class="content">
+                        <div class="row">
+	<div class="col-lg-6">
+		<h1>
+			Candidatos
+			<small>lista dos candidatos</small>
+		</h1>  
+	</div> 
+</div> 
+
+<div class="box box-default">
+	<!-- /.box-header -->
+	<div class="box-body">
+		<div id="vagas-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer"><div class="clear"></div><div class="dt-buttons"><button class="dt-button buttons-alert" tabindex="0" aria-controls="vagas-table"><span>Busca Avançada</span></button> </div><div id="vagas-table_processing" class="dataTables_processing panel panel-default" style="display: none;">Processando...</div><table class="table table-bordered display dataTable no-footer" id="vagas-table" role="grid" aria-describedby="vagas-table_info" style="width: 1636px;">
+			<thead>
+				<tr role="row"><th class="details-control sorting_asc" rowspan="1" colspan="1" aria-label="" style="width: 59px;"></th><th class="dt-checkboxes-cell dt-checkboxes-select-all sorting_disabled" tabindex="0" aria-controls="vagas-table" rowspan="1" colspan="1" style="width: 13px;" data-col="1" aria-label=""><input type="checkbox"></th><th class="sorting" tabindex="0" aria-controls="vagas-table" rowspan="1" colspan="1" aria-label="Nome: Ordenar colunas de forma ascendente" style="width: 257px;">Nome</th><th class="sorting" tabindex="0" aria-controls="vagas-table" rowspan="1" colspan="1" aria-label="Idade: Ordenar colunas de forma ascendente" style="width: 145px;">Idade</th><th class="sorting" tabindex="0" aria-controls="vagas-table" rowspan="1" colspan="1" aria-label="Estado: Ordenar colunas de forma ascendente" style="width: 166px;">Estado</th><th class="sorting" tabindex="0" aria-controls="vagas-table" rowspan="1" colspan="1" aria-label="Cidade: Ordenar colunas de forma ascendente" style="width: 229px;">Cidade</th><th class="sorting" tabindex="0" aria-controls="vagas-table" rowspan="1" colspan="1" aria-label="Experiência: Ordenar colunas de forma ascendente" style="width: 244px;">Experiência</th><th class="sorting" tabindex="0" aria-controls="vagas-table" rowspan="1" colspan="1" aria-label="Sexo: Ordenar colunas de forma ascendente" style="width: 234px;">Sexo</th></tr>
+			</thead>
+		<tbody><tr role="row" class="odd"><td class="details-control sorting_1"></td><td class=" dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes"></td><td>Guilherme Freire</td><td></td><td>MG</td><td>Nova Lima</td><td>8</td><td>Não Informado</td></tr><tr role="row" class="even"><td class="details-control sorting_1"></td><td class=" dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes"></td><td>teste</td><td></td><td></td><td></td><td>0</td><td>Não Informado</td></tr><tr role="row" class="odd"><td class="details-control sorting_1"></td><td class=" dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes"></td><td>UFMG</td><td></td><td></td><td></td><td>0</td><td>Não Informado</td></tr><tr role="row" class="even"><td class="details-control sorting_1"></td><td class=" dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes"></td><td>teste</td><td></td><td></td><td></td><td>0</td><td>Não Informado</td></tr><tr role="row" class="odd"><td class="details-control sorting_1"></td><td class=" dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes"></td><td>gabriel</td><td></td><td>MG</td><td>Belo Horizonte</td><td>143</td><td>Não Informado</td></tr><tr role="row" class="even"><td class="details-control sorting_1"></td><td class=" dt-checkboxes-cell"><input type="checkbox" class="dt-checkboxes"></td><td>pedro</td><td>43</td><td>MG</td><td>be</td><td>365</td><td>Feminino</td></tr></tbody></table><div class="dataTables_info" id="vagas-table_info" role="status" aria-live="polite">Mostrando de 1 até 6 de 6 registros</div><div class="dataTables_paginate paging_simple_numbers" id="vagas-table_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="vagas-table_previous"><a href="http://localhost:8000/user-empresa/lista-candidatos#" aria-controls="vagas-table" data-dt-idx="0" tabindex="0">Anterior</a></li><li class="paginate_button active"><a href="http://localhost:8000/user-empresa/lista-candidatos#" aria-controls="vagas-table" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button next disabled" id="vagas-table_next"><a href="http://localhost:8000/user-empresa/lista-candidatos#" aria-controls="vagas-table" data-dt-idx="2" tabindex="0">Próximo</a></li></ul></div><div class="dataTables_length" id="vagas-table_length"><label><select name="vagas-table_length" aria-controls="vagas-table" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> resultados por página</label></div></div>
+	</div>
+</div>
+
+<div id="FiltrosCandidatos" class="modal fade bs-example-modal-sm in" role="dialog" style="display: block; padding-left: 17px;">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">      
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+				<h4 class="modal-title" id="gridSystemModalLabel">Busca Avançada</h4>
+			</div>
+			<div class="modal-body">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="estado">Estado:</label>						
+								<select class="form-control" name="estado[]" id="estado" style="width: 100%;"><option value="">Selecione um estado</option><option value="AC">Acre</option><option value="AL">Alagoas</option><option value="AM">Amazonas</option><option value="AP">Amapá</option><option value="BA">Bahia</option><option value="CE">Ceará</option><option value="DF">Distrito Federal</option><option value="ES">Espírito Santo</option><option value="GO">Goiás</option><option value="MA">Maranhão</option><option value="MG">Minas Gerais</option><option value="MS">Mato Grosso do Sul</option><option value="MT">Mato Grosso</option><option value="PA">Pará</option><option value="PB">Paraíba</option><option value="PE">Pernambuco</option><option value="PI">Piauí</option><option value="PR">Paraná</option><option value="RJ">Rio de Janeiro</option><option value="RN">Rio Grande do Norte</option><option value="RO">Rondônia</option><option value="RR">Roraima</option><option value="RS">Rio Grande do Sul</option><option value="SC">Santa Catarina</option><option value="SP">São Paulo</option><option value="SE">Sergipe</option><option value="TO">Tocantins</option></select>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="area_profissional">Cidade:</label>			
+								<select multiple="" class="form-control select2 select2-hidden-accessible" name="cidade[]" id="cidade" style="width: 100%;" tabindex="-1" aria-hidden="true">                 
+								</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>									
+							</div>
+						</div>
+					</div>	
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label for="escolaridade">Escolaridade:</label>						
+								<select multiple="" class="form-control select2 select2-hidden-accessible" name="escolaridade[]" id="escolaridade" style="width: 100%;" tabindex="-1" aria-hidden="true">
+																		<option value="Analfabeto">Analfabeto</option>
+																			<option value="Ensino Fundamental incompleto">Ensino Fundamental incompleto</option>
+																			<option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
+																			<option value="Ensino Médio Incompleto">Ensino Médio Incompleto</option>
+																			<option value="Ensino Médio Completo">Ensino Médio Completo</option>
+																			<option value="Ensino Superior Incompleto">Ensino Superior Incompleto</option>
+																			<option value="Ensino Superior Completo">Ensino Superior Completo</option>
+																			<option value="Mestrado Completo">Mestrado Completo</option>
+																			<option value="Doutorado Completo">Doutorado Completo</option>
+																			<option value="Pós Graduado">Pós Graduado</option>
+																			</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="area_profissional">Area Atuação:</label>			
+									<select multiple="" class="form-control select2 select2-hidden-accessible" name="area_profissional[]" id="area_profissional" style="width: 100%;" tabindex="-1" aria-hidden="true">
+																				<option value="1">Abordagem</option>
+																				<option value="2">Ajudante</option>
+																				<option value="3">Analista de Crédito</option>
+																				<option value="4">Animador(a)</option>
+																				<option value="5">Aplicador(a) de Maquiagem</option>
+																				<option value="6">Atendente</option>
+																				<option value="7">Ator/Atriz</option>
+																				<option value="8">Aux. Administrativo</option>
+																				<option value="9">Barman</option>
+																				<option value="10">Blitz Sampling</option>
+																				<option value="11">Borrifação</option>
+																				<option value="12">Caixa</option>
+																				<option value="13">Cantor(a)</option>
+																				<option value="14">Cartunista</option>
+																				<option value="15">Coordenador(a) Interna</option>
+																				<option value="16">Dançarino(a)</option>
+																				<option value="17">Degustador(a)</option>
+																				<option value="18">Demostrador(a)</option>
+																				<option value="19">Esteticista</option>
+																				<option value="20">Estoquista</option>
+																				<option value="21">Faxineiro(a)</option>
+																				<option value="22">Frente de Caixa</option>
+																				<option value="23">Garçom/Garçonete</option>
+																				<option value="24">Merchandising</option>
+																				<option value="25">Modelo</option>
+																				<option value="26">Monitor(a)</option>
+																				<option value="27">Motoqueiro(a)</option>
+																				<option value="28">Motorista</option>
+																				<option value="29">Pesquisador(a)</option>
+																				<option value="30">Promotor(a)</option>
+																				<option value="31">Propagandista</option>
+																				<option value="32">Recepcionista</option>
+																				<option value="33">Recrutamento e Seleção</option>
+																				<option value="34">Repositor(a)</option>
+																				<option value="35">Segurança</option>
+																				<option value="36">Somelier</option>
+																				<option value="37">Supervisor(a)</option>
+																				<option value="38">Suporte Técnico</option>
+																				<option value="39">Telemarketing Ativo</option>
+																				<option value="40">Telemarketing Receptivo</option>
+																				<option value="41">Vendedor(a) Externo</option>
+																				<option value="42">Vendedor(a) Interno</option>
+																				<option value="43">Administrativo</option>
+																				<option value="44">Bares/Restaurantes</option>
+																				<option value="45">Bazar/Brinquedos</option>
+																				<option value="46">Bebidas</option>
+																				<option value="47">Beleza Corporal</option>
+																				<option value="48">Beleza Facial</option>
+																				<option value="49">Cartão de Crédito</option>
+																				<option value="50">Coloração de Cabelo</option>
+																				<option value="51">Confeccções</option>
+																				<option value="52">Congelados/Frios/Refrigerados</option>
+																				<option value="53">Congressos e Convenções</option>
+																				<option value="54">Degustações de Vinhos</option>
+																				<option value="55">Eletro-Eletrônicos(linha branca)</option>
+																				<option value="56">Eletro-Eletrônicos(linha marrom)</option>
+																				<option value="57">Eventos</option>
+																				<option value="58">Fantasia</option>
+																				<option value="59">Feiras</option>
+																				<option value="60">Higiene</option>
+																				<option value="61">Imóveis</option>
+																				<option value="62">Informática</option>
+																				<option value="63">Joalheria</option>
+																				<option value="64">Laboratório</option>
+																				<option value="65">Maquiagem</option>
+																				<option value="66">Mercearia</option>
+																				<option value="67">Móveis</option>
+																				<option value="68">Páscoa</option>
+																				<option value="69">Perfumaria</option>
+																				<option value="70">Produtos Alimenticios</option>
+																				<option value="71">Produtos Farmacêuticos</option>
+																				<option value="72">Produtos Limpeza</option>
+																				<option value="73">Produtos Veterinarios</option>
+																				<option value="74">Provedores de Internet</option>
+																				<option value="75">Refresqueiras</option>
+																				<option value="76">Telefonia Celular</option>
+																				<option value="77">Telefonia Fixa</option>
+																				<option value="78">Troca de Cupons</option>
+																				<option value="79">Produtos Infantis</option>
+																				<option value="80">Laticínios</option>
+																				<option value="81">Automóveis</option>
+										                   
+									</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>									
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="especializacao">Especialização:</label>
+									<select multiple="" class="form-control select2 select2-hidden-accessible" name="especializacao[]" id="especializacao" style="width: 100%;" tabindex="-1" aria-hidden="true">
+										<option value="">-- Selecione --</option>
+										<option value="Determinado">Determinado</option>
+										<option value="Indeterminado">Indeterminado</option>
+									</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+								</div>
+							</div>							
+							<div class="col-lg-6">
+								<div class="form-group">
+									<label for="idiomas_fluente">Idiomas necessarios:</label> 
+									<select multiple="" class="form-control select2 select2-hidden-accessible" name="idiomas_necessarios[]" id="idiomas_necessarios" style="width: 100%;" tabindex="-1" aria-hidden="true">
+																				<option value="1">Alemão										</option><option value="2">Inglês										</option><option value="3">Espanhol										</option><option value="4">Italiano										</option><option value="5">Francês										</option><option value="6">Japonês                   
+										</option></select><span class="select2 select2-container select2-container--default select2-container--below select2-container--focus" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-selection__choice" title="Alemão										"><span class="select2-selection__choice__remove" role="presentation">×</span>Alemão										</li><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+									</div>
+
+								</div>
+							</div>
+							<hr>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="tempo_experiencia">Tempo de Experiência: </label>
+										<select class="form-control perfil" name="tempo_experiencia" id="tempo_experiencia">
+											<option value="">-- Selecione --</option>
+											<option value="S">Sim</option>
+											<option value="N">Não</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="sexo">Sexo: </label>
+										<select multiple="" class="form-control select2 select2-hidden-accessible" name="sexo[]" id="sexo" style="width: 100%;" tabindex="-1" aria-hidden="true">
+											<option value="m">Masculino</option>
+											<option value="f">Feminino</option>
+										</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="vaga_deficiente">Vaga Deficiênte: </label>
+										<select class="form-control perfil" name="vaga_deficiente" id="vaga_deficiente">
+											<option value="">-- Selecione --</option>
+											<option value="S">Sim</option>
+											<option value="N">Não</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="tempo_experiencia">Tempo de Experiência: </label>
+										<select class="form-control perfil" name="tempo_experiencia" id="tempo_experiencia">
+											<option value="">-- Selecione --</option>
+											<option value="S">Sim</option>
+											<option value="N">Não</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="faixa_etaria_inicio">Faixa Etária: </label>
+										<div class="input-group">
+											<input type="number" class="form-control" name="faixa_etaria_inicio" min="0" max="99" value="0" required="">
+											<div class="input-group-addon">a</div>
+											<input type="number" class="form-control" name="faixa_etaria_final" min="0" max="99" value="99" required="">
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="form-group">
+										<label for="cnh">CNH: </label>	
+										<select class="form-control perfil" name="cnh" id="cnh">
+											<option value="">-- Selecione --</option>
+											<option value="S">Sim</option>
+											<option value="N">Não</option>
+										</select>
+									</div>
+								</div>
+								<div class="dados_veiculos_" style="display: none;">
+									<div class="col-lg-4">
+										<div class="form-group"> 
+											<label for="categoria_cnh">Categoria CNH: </label>
+											<select multiple="" name="categoria_cnh[]" class="form-control select2 select2-hidden-accessible" id="categoria_cnh" style="width: 100%;" tabindex="-1" aria-hidden="true">
+												<option value="A">A</option>
+												<option value="B">B</option>
+												<option value="C">C</option>
+												<option value="D">D</option>
+												<option value="E">E</option>
+												<option value="AB">AB</option>
+												<option value="AD">AD</option>
+												<option value="AE">AE</option>
+											</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder="" style="width: 0.75em;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>	
+										</div>							
+									</div>							
+									<div class="col-lg-4">	
+										<label for="tp_veiculo_proprio">Veiculo prórpio: </label>
+										<select class="form-control perfil" name="tp_veiculo_proprio" id="tp_veiculo_proprio">
+											<option value="">-- Selecione --</option>
+											<option value="S">Sim</option>
+											<option value="N">Não</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="row">
+								<div class="col-lg-11">
+									<div class="form-group">
+
+										<button class="btn btn-success pull-right" id="busca">Buscar</button>
+
+									</div>
+								</div>
+
+
+							</div>
+						</div>               
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		                    </section>
+                </div>
+                <footer class="main-footer"></footer>
+            </div>
+            <script src="./Live Marketing_files/jquery-2.0.3.min.js.download" type="text/javascript"></script>
+            <script src="./Live Marketing_files/bootstrap.min.js.download"></script>
+            <script src="./Live Marketing_files/adminlte.min.js.download"></script>
+            <script src="./Live Marketing_files/toastr.min.js.download"></script>
+            <script src="./Live Marketing_files/bootstrap-datepicker.js.download"></script>
+            <script src="./Live Marketing_files/bootstrap-datepicker.pt-BR.js.download"></script>
+            <script src="./Live Marketing_files/jquery.mask.js.download"></script>
+                            <div class="modal fade bs-example-modal-lg" id="novaSelecao" tabindex="-1" role="dialog" aria-labelledby="selecaoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">      
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">Nova Seleção</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" method="POST" action="http://localhost:8000/user-empresa/salva-selecao" name="selecaoForm" id="selecaoForm">
+                    <input type="hidden" name="_token" value="ckr6M9art1bnAD1KmubEJhQK6tPWLBK650dGC4Am">
+                    <input type="hidden" name="id_empresa" value="1">
+                    <input type="hidden" name="id_user_create" value="2">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="nome" class="col-lg-2 control-label"></label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control input-sm" name="desc_selecao" id="desc_selecao" placeholder="Título da Seleção">
+                            </div>    
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Participação Coligada:</label>
+                            <div class="col-lg-7">
+                                <div class="radio">
+                                    <label class="col-lg-4">
+                                        <input type="radio" name="parcipacao_coligada" value="S">
+                                        Sim
+                                    </label>
+                                    <label class="col-lg-3">
+                                        <input type="radio" name="parcipacao_coligada" value="N">
+                                        Não
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="coligadas" style="display: none;">
+                            <label for="id_coligada" class="col-lg-3 control-label">Coligada:</label>
+                            <div class="col-lg-7">
+                                <select class="form-control input-sm" name="id_coligada" id="id_coligada">
+                                    <option value="">-- Selecione --</option>
+                                                                                                            <option value="2">Coligada</option> 
+                                                                                                        </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="resposavel">
+                            <label for="id_responsavel_selecao" class="col-lg-3 control-label">Responsável Seleção:</label>
+                            <div class="col-lg-7">
+                                <select class="form-control input-sm" name="id_responsavel_selecao" id="id_responsavel_selecao" disabled=""> 
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="projeto" class="col-lg-3 control-label">Projeto:</label>
+                            <div class="col-lg-7">
+                                <select class="form-control input-sm" name="projeto" id="projeto">
+                                    <option value="">-- Selecione --</option>
+                                                                                                            <option value="1">teste</option>
+                                                                        <option value="2">teste</option>
+                                                                                                        </select>
+                            </div>
+                        </div>
+                        <div class="form-group" id="div_dt_selecao" style="display: none;">
+                            <label for="dt_selecao" class="col-lg-3 control-label">Data da Seleção:</label>
+                            <div class="col-lg-2">
+                                <input type="text" class="form-control input-sm" name="dt_selecao" id="dt_selecao">
+                            </div>
+                        </div>
+                        <div class="form-group" id="div_triagem_cliente" style="display: none;">
+                            <label class="col-lg-3 control-label">Triagem Cliente:</label>
+                            <div class="col-lg-7">
+                                <div class="radio">
+                                    <label class="col-lg-4">
+                                        <input type="radio" name="triagem_cliente" id="triagem_cliente_s" value="S">
+                                        Sim
+                                    </label>
+                                    <label class="col-lg-3">
+                                        <input type="radio" name="triagem_cliente" id="triagem_cliente_n" value="N">
+                                        Não
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="user_cliente" style="display: none;">
+                            <label for="id_user_cliente_responsavel" class="col-lg-3 control-label">Usuário Cliente Responsável:</label>
+                            <div class="col-lg-7">
+                                <select class="form-control input-sm" name="id_user_cliente_responsavel" id="id_user_cliente_responsavel">
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="modal-footer">
+                            <div class="col-lg-7 control-label">
+                                <button type="submit" class="btn btn-success btn-sm">Confirmar Seleção</button>
+                                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $("input[name='parcipacao_coligada']").click(function() {
+            if($(this).val() == 'S') {
+                $('#id_responsavel_selecao').prop('disabled', true);
+                $("#id_responsavel_selecao").html('<option value="">-- Selecione --</option>');
+                $('#id_responsavel_selecao').val("");
+                $('#coligadas').show();
+                $("#id_coligada").change(function(){
+                    if ($(this).val() != '') {
+                        $('#id_responsavel_selecao').prop('disabled', false);
+                        $.ajax({
+                            processing: true,
+                            cache: false,
+                            type: "POST",
+                            data: {id_empresa: $(this).val()},
+                            url: "http://localhost:8000/empresa/users-empresa",
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(s) {
+                                if(s.status == "empresa_ok") {
+                                    $("#id_responsavel_selecao").html('<option value="">-- Selecione --</option>');
+                                    $.each(s.UsuariosEmpresa,function(key, value) 
+                                    {   
+                                        $("#id_responsavel_selecao").append('<option value=' + key + '>' + value + '</option>');
+                                    });
+                                    $("#resposavel").show();
+                                }    
+                            },
+                            error: function(s) {
+                                console.log(s.responseText);
+                            }
+                        });
+                    } else {
+                        $("#id_responsavel_selecao").html('<option value="">-- Selecione --</option>');
+                        $("#resposavel").hide(); 
+                    }
+                });
+            } else if ($(this).val() == 'N') {
+                $("#coligadas").hide();
+                $('#id_responsavel_selecao').prop('disabled', false);
+                $("#id_responsavel_selecao").html('<option value="">-- Selecione --</option>');
+                var usuariosEmpresa =                     '<option value="2">teste</option>"'+
+                                
+                $("#id_coligada").val("");   
+                $("#id_responsavel_selecao").append(usuariosEmpresa)                
+                $("#resposavel").show();
+            }
+        });
+
+        $("#projeto").change(function() {
+            $("#triagem_cliente_s, #triagem_cliente_n").attr("checked", false);
+            $("#id_user_cliente_responsavel").html('<option value="">-- Selecione --</option>');
+            if ($("#projeto") != "") {
+                $.ajax({
+                    processing: true,
+                    cache: false,
+                    type: "POST",
+                    data: {id_projeto: $("#projeto").val()},
+                    url: "http://localhost:8000/projetos/users-empresa-projeto",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(s) { 
+                        $("#div_dt_selecao").show();
+                        $("#dt_selecao").mask('99/99/9999');
+                        $('#dt_selecao').datepicker({
+                            language: "pt-BR",
+                            format: 'dd/mm/yyyy',
+                            autoclose: true,
+                            startDate: new Date(s.projeto.dt_inicio).toLocaleDateString(),
+                            endDate: new Date(s.projeto.dt_fim).toLocaleDateString()
+                        });
+                        if(s.status == "users_ok") {                            
+                            //só exiber checkbox triagem cliente se o projeto selecionado não for interno
+                            $("#div_triagem_cliente").show();
+                            $("#triagem_cliente_s, #triagem_cliente_n").bind('click', function(){
+                                $("#id_user_cliente_responsavel").html('<option value="">-- Selecione --</option>');
+                                $.each(s.usersCliente,function(key, value) {   
+                                    $("#id_user_cliente_responsavel").append('<option value=' + key + '>' + value + '</option>');
+                                });
+
+                                //mostra usersCliente somente após marcar sim no checkbox triagem cliente                                
+                                if ( $(this).val() == 'S' ) {
+                                    $("#user_cliente").show();
+                                } else {
+                                    $('#id_user_cliente_responsavel').prop('disabled', false);
+                                    $("#id_user_cliente_responsavel").html('<option value="">-- Selecione --</option>');
+                                    $("#user_cliente").hide();
+                                }
+                            });
+                        } else if(s.status == "interno") {
+                            $("#div_triagem_cliente").hide();
+                            $('#id_user_cliente_responsavel').prop('disabled', false);
+                            $("#id_user_cliente_responsavel").html('<option value="">-- Selecione --</option>');
+                            $("#user_cliente").hide();
+                            $("#triagem_cliente_s, #triagem_cliente_n").attr("checked", false);
+                        }
+                    },
+                    error: function(s) {
+                        console.log(s.responseText);
+                    }
+                });
+            }
+        });
+    });
+</script>                                        <div id="AltaraFotoPerfil" class="modal fade bs-example-modal-sm" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">      
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="gridSystemModalLabel">Alterar Foto de Perfil</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form class="form-horizontal" action="http://localhost:8000/candidato/save" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="_token" value="ckr6M9art1bnAD1KmubEJhQK6tPWLBK650dGC4Am">
+                        <input type="hidden" name="id_candidato" value="2">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"></label> 
+                            <div class="col-lg-3">
+                                <img id="foto_avatar" src="./Live Marketing_files/default.jpg" class="img-circle profile-pic" style="height: 230px !important; width: 230px;">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label"></label>
+                            <div class="col-lg-3">
+                                <div class="btn-group-vertical">
+                                    <a href="http://localhost:8000/user-empresa/lista-candidatos"><input type="file" name="avatar" id="avatar"></a>
+                                    <a href="http://localhost:8000/user-empresa/lista-candidatos#" class="btn btn-info" id="start-camera_modal">Utilizar a camera</a> 
+                                    <a href="http://localhost:8000/user-empresa/lista-candidatos#" class="btn btn-danger btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Remover Foto</a> 
+                                </div>                            
+                            </div> 
+                        </div>
+                        <div class="form-group">
+                            <div class="container-camera col-sm-12">
+                                <div class="app container-app">             
+                                    <video id="camera-stream"></video>
+                                    <img id="snap">
+                                    <p id="error-message_modal"></p>
+                                    <div class="controls">
+                                        <a href="http://localhost:8000/user-empresa/lista-candidatos#" id="delete-photo_modal" title="Delete Photo" class="disabled"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        <a href="http://localhost:8000/user-empresa/lista-candidatos#" id="take-photo_modal" title="Take Photo"><i class="fa fa-camera" aria-hidden="true"></i></a>
+                                        <a href="http://localhost:8000/user-empresa/lista-candidatos#" id="download-photo_modal" download="selfie.png" title="Save Photo" class="disabled"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>  
+                                    </div>
+
+                                    <!-- Hidden canvas element. Used for taking snapshot of video. -->
+                                    <canvas></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </form> 
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    // References to all the element we will need.
+    var video = document.querySelector('#camera-stream'),
+    image = document.querySelector('#snap'),
+    start_camera = document.querySelector('#start-camera_modal'),
+    controls = document.querySelector('.controls'),
+    take_photo_btn = document.querySelector('#take-photo_modal'),
+    delete_photo_btn = document.querySelector('#delete-photo_modal'),
+    download_photo_btn = document.querySelector('#download-photo_modal'),
+    error_message = document.querySelector('#error-message_modal');
+
+
+    // Mobile browsers cannot play video without user input,
+    // so here we're using a button to start it manually.
+    start_camera.addEventListener("click", function(e){
+
+    // The getUserMedia interface is used for handling camera input.
+    // Some browsers need a prefix so here we're covering all the options
+    navigator.getMedia = ( navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia ||
+        navigator.msGetUserMedia);
+
+
+    if(!navigator.getMedia){
+        displayErrorMessage("Seu navagator não é compativel com essa função.");
+    }
+    else{
+
+      // Request the camera.
+      navigator.getMedia(
+      {
+        video: true
+    },
+        // Success Callback
+        function(stream){
+
+          // Create an object URL for the video stream and
+          // set it as src of our HTLM video element.
+          video.src = window.URL.createObjectURL(stream);
+
+          // Play the video element to start the stream.
+          video.play();
+          video.onplay = function() {
+            showVideo();
+        };
+
+    },
+        // Error Callback
+        function(err){
+            //console.log(err.name, err);
+            displayErrorMessage("Houve um erro ao utiliza a camera");
+            $('#error-message').show()
+        }
+        );
+
+  }
+
+  e.preventDefault();
+
+      // Start video playback manually.
+      $('.app').show();
+      video.play();
+      showVideo();
+
+  });
+
+    take_photo_btn.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        var snap = takeSnapshot();
+
+      // Show image. 
+      image.setAttribute('src', snap);
+      image.classList.add("visible");
+
+      // Enable delete and save buttons
+      delete_photo_btn.classList.remove("disabled");
+      download_photo_btn.classList.remove("disabled");
+
+      // Set the href attribute of the download button to the snap url.
+      download_photo_btn.href = snap;
+
+      // Pause video playback of stream.
+      video.pause();
+
+  });
+
+
+    delete_photo_btn.addEventListener("click", function(e){
+
+        e.preventDefault();
+
+        // Hide image.
+        image.setAttribute('src', "");
+        image.classList.remove("visible");
+
+        // Disable delete and save buttons
+        delete_photo_btn.classList.add("disabled");
+        download_photo_btn.classList.add("disabled");
+
+        // Resume playback of stream.
+        video.play();
+
+    });
+
+    download_photo_btn.addEventListener("click", function(e){
+
+        e.preventDefault();
+        
+        var fd = new FormData();
+        var foto = image.getAttribute('src');
+        fd.append('data', foto);
+
+        $.ajax({
+            processData: false ,
+            cache: false, 
+            contentType: false,               
+            type: "POST",
+            enctype: 'multipart/form-data',
+            data: fd,
+            url: "http://localhost:8000/user/UploadAvatar",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(s) {
+                if(s.status == 'ok'){
+                    $(".user-image").attr("src", 'http://localhost:8000/images/avatars/'+s.avatar);
+                    $("#foto_avatar").attr("src", 'http://localhost:8000/images/avatars/'+s.avatar);
+                    $(".profile-pic").css('background-image', 'url('+'http://localhost:8000/images/avatars/' + s.avatar + ')');
+                    toastr["success"]("Foto atualizada com sucesso");
+                }
+            },
+            error: function(s) {
+                console.log(s.responseText);
+            }
+        });
+
+
+        delete_photo_btn.classList.add("disabled");
+        download_photo_btn.classList.add("disabled");
+
+
+
+        $('.app').hide();
+
+    });
+
+
+
+    function showVideo(){
+      // Display the video stream and the controls.
+
+      hideUI();
+      video.classList.add("visible");
+      controls.classList.add("visible");
+  }
+
+
+  function takeSnapshot(){
+      // Here we're using a trick that involves a hidden canvas element.  
+
+      var hidden_canvas = document.querySelector('canvas'),
+      context = hidden_canvas.getContext('2d');
+
+      var width = video.videoWidth,
+      height = video.videoHeight;
+
+      if (width && height) {
+
+        // Setup a canvas with the same dimensions as the video.
+        hidden_canvas.width = width;
+        hidden_canvas.height = height;
+
+        // Make a copy of the current frame in the video on the canvas.
+        context.drawImage(video, 0, 0, width, height);
+
+        // Turn the canvas image into a dataURL that can be used as a src for our photo.
+        return hidden_canvas.toDataURL('image/png');
+    }
+}
+
+
+function displayErrorMessage(error_msg, error){
+    error = error || "";
+    if(error){
+        console.log(error);
+    }
+
+    error_message.innerText = error_msg;
+
+    hideUI();
+    error_message.classList.add("visible");
+
+    
+}
+
+
+function hideUI(){
+      // Helper function for clearing the app UI.
+
+      controls.classList.remove("visible");
+      start_camera.classList.remove("visible");
+      video.classList.remove("visible");
+      //snap.classList.remove("visible");
+      //error_message.classList.remove("visible");
+  }               
+  function showChangePassword(){
+    if ($("#change_password").prop("hidden") == true) {
+        $("#change_password").prop("hidden", false);
+    } else{
+        $("#change_password").prop("hidden", true);
+    }
+}
+
+function confPassWord(){ 
+    if ($("#password").val() !== $("#conf_password").val()) {
+        alert('Confirmação da Senha Não confere');
+        $("#password, #conf_password").val('');
+        $("#password").focus();
+    }
+}
+
+</script>
+            
+            		<script src="./Live Marketing_files/jquery.dataTables.min.js.download"></script>
+		<script src="./Live Marketing_files/dataTables.bootstrap.min.js.download"></script>
+		<script src="./Live Marketing_files/sweetalert2.all.min.js.download"></script>
+		<script src="./Live Marketing_files/dataTables.checkboxes.min.js.download"></script>
+		<script src="./Live Marketing_files/dataTables.buttons.min.js.download"></script>
+		<script src="./Live Marketing_files/select2.full.min.js.download"></script>
+		<script src="./Live Marketing_files/pt-BR.js.download"></script>
+		<script type="text/javascript" src="./Live Marketing_files/cidades-estados-1-4.js.download"></script>
+		<script language="JavaScript" type="text/javascript" charset="utf-8">
+			new dgCidadesEstados({
+				estado: document.getElementById('estado'),
+				cidade: document.getElementById('cidade')
+			})
+		</script>
+		<script>
+
+			/* Formato dos detalhes */
+			function format ( d ) {
+    // `d` is the original data object for the row
+    return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+    '<tr>'+
+    '<td>Atuações:</td>'+
+    '<td>'+(d.atuacoes ? d.atuacoes : "Não informado")+'</td>'+
+    '</tr>'+
+    '<tr>'+
+    '<td>Idiomas:</td>'+
+    '<td>'+(d.idiomas ? d.idiomas : "Não informado")+'</td>'+
+    '</tr>'+
+    '<tr>'+
+    '<td>Link para curriculo:</td>'+
+    '<td>LINK</td>'+
+    '</tr>'+
+    '</table>';
+}
+
+$(function() {
+	$('.select2').select2({
+		"language": "pt-BR",
+	});
+
+
+	$("#cnh").change(function(){
+		if($(this).val()=='S'){
+			$(".dados_veiculos_").show();
+		}else{
+			$(".dados_veiculos_").hide();
+		}
+	});
+	$.fn.dataTable.ext.buttons.alert = {
+		className: 'buttons-alert',
+
+		action: function ( e, dt, node, config ) {
+			$("#FiltrosCandidatos").modal('toggle');
+		}
+	};
+
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+
+	var table = $('#vagas-table').DataTable({
+		"language": {
+			"url": "http://localhost:8000/plugins/datatables.net/js/Portuguese-Brasil.json"
+		},
+		dom: '<"clear">Brtipl',
+		buttons: [
+		{
+			extend: 'alert',
+			text: 'Busca Avançada'
+		},
+		],
+		processing: true,
+		serverSide: true,
+		"bFilter": false,
+		"dateFormat": 'dd-mm-yyyy',
+		'headers': {
+			'X-CSRF-TOKEN': 'ckr6M9art1bnAD1KmubEJhQK6tPWLBK650dGC4Am'
+		},
+		ajax: {
+			url: 'http://localhost:8000/user-empresa/lista-candidatos',
+			method: 'POST',
+			data: function (d) {
+				//campos para enviar na busca
+				d.sexo = $('#sexo').val();
+				d.estado = $('#estado').val();
+				d.cidade = $('#cidade').val();
+				d.area_profissional = $('#area_profissional').val();
+			},
+			error: function (data) {
+				console.log(data)
+			}
+		},
+		columns: [
+		{
+			'className':      'details-control',
+			'orderable':      false,
+			'data':           null,
+			'defaultContent': ''
+		},
+		{
+			'data': 'id_user',
+			'checkboxes': {
+				'selectRow': true
+			}
+		},
+		{ data: 'id_user', "visible": false },
+		{ data: 'dados_pessoais.nome'},
+		{ data: 'idade'},
+		{ data: 'estado'},
+		{ data: 'cidade'},
+		{ data: 'experiencia'},
+		{ data: 'sexo'},
+		
+		]
+	});
+
+	$('#busca').on('click', function(e) {
+		$('#vagas-table').DataTable().ajax.reload();
+		$("#FiltrosCandidatos").modal('toggle');
+	});
+
+
+  // Evento para abrir os detalhes
+  $('#vagas-table tbody').on('click', 'td.details-control', function () {
+  	var tr = $(this).closest('tr');
+  	var row = table.row( tr );
+
+  	if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
+        }
+    });
+
+});
+</script>
+        
+        <div class="modal-backdrop fade in"></div></body></html>

@@ -1,0 +1,54 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateMonitoramentoTable extends Migration
+{
+    /**
+     * Schema table name to migrate
+     * @var string
+     */
+    public $tableName = 'monitoramento';
+
+    /**
+     * Run the migrations.
+     * @table qualidade
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create($this->tableName, function (Blueprint $table) {
+            $table->increments('id');
+            $table->unsignedInteger('Ano');
+            $table->unsignedInteger('CodCidade');
+            $table->unsignedInteger('user_id');
+            $table->string('BEBERDIRIGIR');
+            $table->string('ULTIMOBEBERDIRIGIR');
+            $table->string('QUADROBEBERDIRIGIR');
+            $table->string('VELOCIDADE');
+            $table->string('ULTIMOVELOCIDADE');
+            $table->string('QUADROVELOCIDADE');
+            $table->string('DEFINIDOMUNICIPIO');
+            $table->string('ULTIMODEFINIDOMUNICIPIO');
+            $table->text('QUADRODEFINIDOMUNICIPIO');
+            $table->string('QUADROGRUPOVITIMAS');
+            $table->string('QUADROGRUPOVITIMAS_QUAIS');
+            $table->string('ULTIMOQUADROGRUPOVITIMAS');
+
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+     public function down()
+     {
+       Schema::dropIfExists($this->tableName);
+     }
+}
