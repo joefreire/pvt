@@ -736,7 +736,7 @@ function editarProjeto(id) {
 			$("input[name=Outubro]").val(valores.Outubro);
 			$("input[name=Novembro]").val(valores.Novembro);
 			$("input[name=Dezembro]").val(valores.Dezembro);
-
+			$("div .ProjetosPrograma").slice(1).remove();
 			if(valores.planos != null){
 				var programas = valores.planos;
 				if(programas.length == 1){
@@ -745,14 +745,14 @@ function editarProjeto(id) {
 				}else{
 					console.log(programas)
 					$.each(programas, function(i, item) {
-						console.log(i,item)
+						console.log('s',i,item)
 						if(i == 0){
 							$("select[name='ProjetoPrograma[]']").last().val(item.id);
-							$("input[name='PesoPrograma[]']").last().val(programas[i].PesoPlano);
+							$("input[name='PesoPrograma[]']").last().val(item.pivot.PesoPlano);
 						}else{
 							$('.addPrograma').trigger('click')
 							$("select[name='ProjetoPrograma[]']").last().val(item.id);
-							$("input[name='PesoPrograma[]']").last().val(programas[i].PesoPlano);
+							$("input[name='PesoPrograma[]']").last().val(item.pivot.PesoPlano);
 						}
 					}) 
 				}
@@ -1017,6 +1017,7 @@ function resetAllValues() {
 	$('#tableProjetos').bootstrapTable('collapseAllRows');
 	$('#Projeto').data('formValidation').resetForm($('#Projeto'));
 	$('#Plano').data('formValidation').resetForm($('#Plano'));
+	$("div .ProjetosPrograma").slice(1).remove();
 
 
 }
@@ -1668,7 +1669,7 @@ $(document).ready(function () {
                 			$('#_tabelaResults').show();
                 			alertify.success('Gravado com sucesso'); 
                 			//reload page
-                			//window.location.replace("{{ route('plano') }}&Ano="+$('#Ano').val());
+                			window.location.replace("{{ route('plano') }}&Ano="+$('#Ano').val());
                 			//$('#Projeto').data('formValidation').resetForm($('#Projeto'));
 
 
