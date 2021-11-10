@@ -32,6 +32,7 @@ class ProcessaSih implements ShouldQueue
 	public $unica;
 	public $buscaSIH;
 	public $timeout = 0;
+	public $tries = 1;
 	/**
 	 * Create a new job instance.
 	 *
@@ -65,6 +66,18 @@ class ProcessaSih implements ShouldQueue
 			$this->processo->Status = 0;
 			$this->processo->Log = "Em processamento";
 			$this->processo->save();
+
+			$deletaSih = DB::table('upload_sih')
+			->where('Ano',$this->dataImport['Ano'])
+			->where('Trimestre', $this->dataImport['Trimestre'])
+			->where('CodCidade',$this->dataImport['Trimestre'])->delete();
+
+			$deletaLinkagem = DB::table('linkagem_sih')
+			->where('Ano',$this->dataImport['Ano'])
+			->where('Trimestre', $this->dataImport['Trimestre'])
+			->where('CodCidade',$this->dataImport['Trimestre'])->delete();
+
+
 			while ($record = $table->nextRecord()) {
 				$sih = Sih::create([
 					'Ano'                   => $this->dataImport['Ano'],
@@ -185,19 +198,19 @@ class ProcessaSih implements ShouldQueue
 			$this->processo->save();
 
 		}
-		OneSignal::sendNotificationUsingTags(
-			"O processo do SIH".$this->processo->id." terminou",
-			array(
-				["field" => "tag",
-				"key" => "user_id",
-				"relation" => "=", 
-				"value" => $this->user->id]
-			),
-			$url = null,
-			$data = null,
-			$buttons = null,
-			$schedule = null
-		);
+		// OneSignal::sendNotificationUsingTags(
+		// 	"O processo do SIH".$this->processo->id." terminou",
+		// 	array(
+		// 		["field" => "tag",
+		// 		"key" => "user_id",
+		// 		"relation" => "=", 
+		// 		"value" => $this->user->id]
+		// 	),
+		// 	$url = null,
+		// 	$data = null,
+		// 	$buttons = null,
+		// 	$schedule = null
+		// );
 	}
 	public function linkagem(){
 
@@ -544,19 +557,30 @@ class ProcessaSih implements ShouldQueue
 		$this->processo->Log = "Erro ao processar SIH";
 		$this->processo->save();
 		\Log::alert('Erro ao importar geral SIH : '.$exception->getMessage());
-		OneSignal::sendNotificationUsingTags(
-			"O processo do SIH".$this->processo->id." terminou com erro",
-			array(
-				["field" => "tag",
-				"key" => "user_id",
-				"relation" => "=", 
-				"value" => $this->user->id]
-			),
-			$url = null,
-			$data = null,
-			$buttons = null,
-			$schedule = null
-		);
+		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+		$deletaSih = DB::table('upload_sih')
+		->where('Ano',$this->dataImport['Ano'])
+		->where('Trimestre', $this->dataImport['Trimestre'])
+		->where('CodCidade',$this->dataImport['Trimestre'])->delete();
+
+		$deletaLinkagem = DB::table('linkagem_sih')
+		->where('Ano',$this->dataImport['Ano'])
+		->where('Trimestre', $this->dataImport['Trimestre'])
+		->where('CodCidade',$this->dataImport['Trimestre'])->delete();
+		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+		// OneSignal::sendNotificationUsingTags(
+		// 	"O processo do SIH".$this->processo->id." terminou com erro",
+		// 	array(
+		// 		["field" => "tag",
+		// 		"key" => "user_id",
+		// 		"relation" => "=", 
+		// 		"value" => $this->user->id]
+		// 	),
+		// 	$url = null,
+		// 	$data = null,
+		// 	$buttons = null,
+		// 	$schedule = null
+		// );
 	}
 
 }

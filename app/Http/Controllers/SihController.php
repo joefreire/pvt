@@ -359,10 +359,16 @@ class SihController extends Controller
 		$table = new Table($path);
 		$rows = array_keys($table->columns);
 		if(!in_array('num_aih', $rows)){
-			return redirect()->back()->with('error','ARQUIVO Sih SEM NUMERODO');
+			return redirect()->back()->with('error','ARQUIVO Sih SEM NUMERO AIH');
 		}
 		if(!(in_array('nome', $rows)) ){
 			return redirect()->back()->with('error','ARQUIVO Sih SEM NOME');
+		}
+		if(!(in_array('dt_nasc', $rows)) ){
+			return redirect()->back()->with('error','ARQUIVO Sih SEM Data de nascimento');
+		}
+		if(!(in_array('dt_interna', $rows)) ){
+			return redirect()->back()->with('error','ARQUIVO Sih SEM Data de internação');
 		}
 
 		$user        = Auth::user();

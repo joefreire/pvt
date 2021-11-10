@@ -42,7 +42,10 @@ class AdminController extends Controller
 				</button>
 				<ul class="dropdown-menu pull-right">
 				<li>
-				<a href="'.route('user.edit',$id).'"><span class="glyphicon glyphicon-file"></span>Editar</a>
+				<a href="'.route('user.edit',$id).'">Editar</a>
+				</li>
+				<li>
+				<a href="'.route('user.delete',$id).'">Deletar</a>
 				</li>
 				<li>
 				<a href="'.route('user.reset',$id).'">Resetar Senha</a>
@@ -59,7 +62,9 @@ class AdminController extends Controller
 			return Auth::user()->CodCidade;
 		}
 		$cidade = Cidades::where('municipio', $request->Cidade)->where('uf', $request->Estado)->first();
-		return $cidade->codigo;
+		if(!empty($cidade)){
+			return $cidade->codigo;
+		}		
 
 	}
 	public function auditoria(Request $request)
@@ -77,11 +82,30 @@ class AdminController extends Controller
 		}
 		return view('admin.listaLogs');
 	}
+	public function filaProcessamento(Request $request)
+	{
+		if(Auth::user()->tipo != 1){
+			return redirect()->route('home')->with('error','sem permissao');
+		}
+		if ($request->ajax()) {
+			$lista = \App\Models\Processo::with('cidade','user')
+			->leftJoin('users', 'users.id', '=', 'processos.user_id')
+			->leftJoin('municipios_ibge', 'municipios_ibge.codigo', '=', 'processos.CodCidade')
+			->select('processos.*');
+
+			return Datatables::eloquent($lista)
+			->toJson();
+		}
+		return view('admin.listaProcessos');
+	}
 	public function getCoordenada(Request $request)
 	{
+		//sem permissao para curl
+		return response()->json([]); 
 		$validator = \Validator::make($request->all(), [
 			'endereco' => 'required',
 		]);
+
 		if ($validator->fails()) {    
 			return response()->json($validator->messages(), 405);
 		}
@@ -105,6 +129,7 @@ class AdminController extends Controller
 		$err = curl_error($curl);
 		curl_close($curl);
 		if ($err) {
+			\Log::debug($err);
 			return response()->json(["cURL Error #:" . $err], 405); 
 		} else {
 			$resultado = json_decode($response);

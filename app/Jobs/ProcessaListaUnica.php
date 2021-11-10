@@ -26,6 +26,7 @@ class ProcessaListaUnica implements ShouldQueue
     public $file;
     public $processo;
     public $timeout = 0;
+    public $tries = 1;
     /**
      * Create a new job instance.
      *
@@ -68,19 +69,19 @@ class ProcessaListaUnica implements ShouldQueue
         $this->processo->save();
         \Log::alert('Erro ao importar Lista Unica : '.$e->getMessage());
     }
-    OneSignal::sendNotificationUsingTags(
-        "O processo da Lista unica".$this->processo->id." terminou",
-        array(
-            ["field" => "tag",
-            "key" => "user_id",
-            "relation" => "=", 
-            "value" => $this->user->id]
-        ),
-        $url = null,
-        $data = null,
-        $buttons = null,
-        $schedule = null
-    );
+    // OneSignal::sendNotificationUsingTags(
+    //     "O processo da Lista unica".$this->processo->id." terminou",
+    //     array(
+    //         ["field" => "tag",
+    //         "key" => "user_id",
+    //         "relation" => "=", 
+    //         "value" => $this->user->id]
+    //     ),
+    //     $url = null,
+    //     $data = null,
+    //     $buttons = null,
+    //     $schedule = null
+    // );
 }
     /**
      * The job failed to process.
@@ -95,19 +96,19 @@ class ProcessaListaUnica implements ShouldQueue
         $this->processo->Log = "Erro ao processar Lista Unica";
         $this->processo->save();
         \Log::alert('Erro ao importar Lista Unica : '.$exception->getMessage());
-        OneSignal::sendNotificationUsingTags(
-            "O processo da Lista unica ".$this->processo->id." terminou com falha",
-            array(
-                ["field" => "tag",
-                "key" => "user_id",
-                "relation" => "=", 
-                "value" => $this->user->id]
-            ),
-            $url = null,
-            $data = null,
-            $buttons = null,
-            $schedule = null
-        );
+        // OneSignal::sendNotificationUsingTags(
+        //     "O processo da Lista unica ".$this->processo->id." terminou com falha",
+        //     array(
+        //         ["field" => "tag",
+        //         "key" => "user_id",
+        //         "relation" => "=", 
+        //         "value" => $this->user->id]
+        //     ),
+        //     $url = null,
+        //     $data = null,
+        //     $buttons = null,
+        //     $schedule = null
+        // );
     }
 
 }

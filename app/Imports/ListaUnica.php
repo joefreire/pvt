@@ -125,35 +125,35 @@ class ListaUnica implements ToArray, WithHeadingRow, WithMultipleSheets, ShouldA
             ->first();
             if(empty($buscaAcidente)){
                     //calcula lat long
-                if(!empty($row['endereco_do_acidente']) 
-                    &&  empty($row['bairro'])                     
-                    && ( empty($row['coordenada_x']) && empty($row['coordenada_y']) ) ) 
-                {
-                    if(isset($ultimaConsulta)){
-                        if($ultimaConsulta->diffInSeconds(\Carbon\Carbon::now() < 1)){
-                            sleep(1);
-                        }
-                    }else{
-                        $ultimaConsulta = \Carbon\Carbon::now();
-                    }
+                // if(!empty($row['endereco_do_acidente']) 
+                //     &&  empty($row['bairro'])                     
+                //     && ( empty($row['coordenada_x']) && empty($row['coordenada_y']) ) ) 
+                // {
+                //     if(isset($ultimaConsulta)){
+                //         if($ultimaConsulta->diffInSeconds(\Carbon\Carbon::now() < 1)){
+                //             sleep(1);
+                //         }
+                //     }else{
+                //         $ultimaConsulta = \Carbon\Carbon::now();
+                //     }
 
-                    $admin = new \App\Http\Controllers\AdminController();
-                    $request = new \Illuminate\Http\Request();
-                    $request['endereco'] = $row['endereco_do_acidente'].
-                    ', '.$row['numero'].
-                    ' '.$row['lote'].
-                    ' '.$row['quadra'].
-                    ' - '.$row['bairro'].
-                    ' '.$row['cidade_acidente'].
-                    ' '.$row['uf_acidente'].
-                    ' Brazil';
-                    $data = $admin->getCoordenada($request);
-                    $data = $data->getData();
-                    if(isset($data->lat) && isset($data->lon)){                        
-                        $row['coordenada_x'] = $data->lat;
-                        $row['coordenada_y'] = $data->lon;
-                    }
-                }
+                //     $admin = new \App\Http\Controllers\AdminController();
+                //     $request = new \Illuminate\Http\Request();
+                //     $request['endereco'] = $row['endereco_do_acidente'].
+                //     ', '.$row['numero'].
+                //     ' '.$row['lote'].
+                //     ' '.$row['quadra'].
+                //     ' - '.$row['bairro'].
+                //     ' '.$row['cidade_acidente'].
+                //     ' '.$row['uf_acidente'].
+                //     ' Brazil';
+                //     $data = $admin->getCoordenada($request);
+                //     $data = $data->getData();
+                //     if(isset($data->lat) && isset($data->lon)){                        
+                //         $row['coordenada_x'] = $data->lat;
+                //         $row['coordenada_y'] = $data->lon;
+                //     }
+                // }
 
                 $quadro = QuadroMultiplo::create([
                     'Ano'   => $dataImport['Ano'],

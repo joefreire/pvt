@@ -101,19 +101,6 @@ class ListaUnicaController extends Controller
 		}else{
 			$CodCidade = Auth::user()->CodCidade;	
 		}
-
-		$lista = Vitimas::where('Ano', $request->Ano)
-		->where('Trimestre', $request->Trimestre)
-		->where('CodCidade', $CodCidade)->forceDelete();
-
-		$pendecias = ListaUnicaPendencias::where('Ano', $request->Ano)
-		->where('Trimestre', $request->Trimestre)
-		->where('CodCidade', $CodCidade)->forceDelete();	
-
-		$QuadroMultiplo = QuadroMultiplo::where('Ano', $request->Ano)
-		->where('Trimestre', $request->Trimestre)
-		->where('CodCidade', $CodCidade)->forceDelete();
-
 		$linkagmesim = LinkagemSim::where('Ano', $request->Ano)
 		->where('Trimestre', $request->Trimestre)
 		->where('CodCidade', $CodCidade)->forceDelete();
@@ -127,6 +114,18 @@ class ListaUnicaController extends Controller
 		->where('CodCidade', $CodCidade)->forceDelete();
 
 		$sih = Sih::where('Ano', $request->Ano)
+		->where('Trimestre', $request->Trimestre)
+		->where('CodCidade', $CodCidade)->forceDelete();
+
+		$lista = Vitimas::where('Ano', $request->Ano)
+		->where('Trimestre', $request->Trimestre)
+		->where('CodCidade', $CodCidade)->forceDelete();
+
+		$pendecias = ListaUnicaPendencias::where('Ano', $request->Ano)
+		->where('Trimestre', $request->Trimestre)
+		->where('CodCidade', $CodCidade)->forceDelete();	
+
+		$QuadroMultiplo = QuadroMultiplo::where('Ano', $request->Ano)
 		->where('Trimestre', $request->Trimestre)
 		->where('CodCidade', $CodCidade)->forceDelete();
 
@@ -476,6 +475,8 @@ class ListaUnicaController extends Controller
 				'NomeBusca'        => \BuscaBR::encode($request->NomeCompleto),
 				'GravidadeLesao'   => $request->GravidadeLesao,
 				'Placa'            => $request->Placa,
+				'Idade' 		   => calculaIdade($request->DataNascimento, $quadro->DataAcidente),
+				'FaixaEtaria'      => calculaFaixaEtaria(calculaIdade($request->DataNascimento, $quadro->DataAcidente)),
 				'MeioTransporte'   => $request->TipoVeiculo,
 				'CondicaoVitima'   => $request->CondicaoVitima,
 				'MeioTransporte'   => $request->MeioTransporte,

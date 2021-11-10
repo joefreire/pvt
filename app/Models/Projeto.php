@@ -67,6 +67,7 @@ class Projeto extends Model implements Auditable
 		$this->Julho+
 		$this->Agosto+
 		$this->Setembro+
+		$this->Outubro+
 		$this->Novembro+
 		$this->Dezembro;
 

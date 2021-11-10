@@ -32,6 +32,7 @@ class ProcessaSim implements ShouldQueue
 	public $unica;
 	public $buscaSIM;
 	public $timeout = 0;
+	public $tries = 1;
 	/**
 	 * Create a new job instance.
 	 *
@@ -65,6 +66,16 @@ class ProcessaSim implements ShouldQueue
 			$this->processo->Status = 0;
 			$this->processo->Log = "Em processamento";
 			$this->processo->save();
+			DB::table('upload_sim')
+			->where('Ano',$this->dataImport['Ano'])
+			->where('CodCidade',$this->dataImport['CodCidade'])
+			->where('Trimestre',$this->dataImport['Trimestre'])
+			->delete();
+			DB::table('linkagem_sim')
+			->where('Ano',$this->dataImport['Ano'])
+			->where('CodCidade',$this->dataImport['CodCidade'])
+			->where('Trimestre',$this->dataImport['Trimestre'])
+			->delete();
 			while ($record = $table->nextRecord()) {
 				$sim = Sim::create([
 					'Ano'                   => $this->dataImport['Ano'],
@@ -231,19 +242,19 @@ $this->processo->save();
 	$this->processo->save();
 
 }
-OneSignal::sendNotificationUsingTags(
-	"O processo do SIM ".$this->processo->id." terminou",
-	array(
-		["field" => "tag",
-		"key" => "user_id",
-		"relation" => "=", 
-		"value" => $this->user->id]
-	),
-	$url = null,
-	$data = null,
-	$buttons = null,
-	$schedule = null
-);
+// OneSignal::sendNotificationUsingTags(
+// 	"O processo do SIM ".$this->processo->id." terminou",
+// 	array(
+// 		["field" => "tag",
+// 		"key" => "user_id",
+// 		"relation" => "=", 
+// 		"value" => $this->user->id]
+// 	),
+// 	$url = null,
+// 	$data = null,
+// 	$buttons = null,
+// 	$schedule = null
+// );
 }
 public function linkagem(){
 
@@ -420,44 +431,44 @@ public function linkagem(){
 						//possivel par 92
 				return ['idUploadSIM'=>$buscaEtapa->id,'Score' => 92];
 			}
-			$buscaEtapa = $buscaNome
-			->filter(function($q) use ($unica) {
-				if(!empty($unica->data_nascimento_formatada) && $unica->DataNascimento != '99/99/9999'){
-					return $q->data_nascimento_formatada <= $unica->data_nascimento_formatada->addDays(5) ||
-					$q->data_nascimento_formatada >= $unica->data_nascimento_formatada->subDays(5);
-				}
-			})
-			->filter(function($q) use ($unica) {
-				if(!empty($unica->data_acidente_formatada) && $unica->DataNascimento != '99/99/9999'){
-					return $q->data_obito_formatada <= $unica->data_acidente_formatada->addDays(5) ||
-					$q->data_obito_formatada >= $unica->data_acidente_formatada->subDays(5);
-				}
-			})
-			->first();
-			if(!empty($buscaEtapa)){
-				//possivel par 90
-				return ['idUploadSIM'=>$buscaEtapa->id,'Score' => 90];
-			}
-			$buscaEtapa = $buscaNome
-			->filter(function($q) use ($unica) {
-				if(!empty($unica->data_acidente_formatada) && $unica->DataNascimento != '99/99/9999'){
-					return $q->data_obito_formatada <= $unica->data_acidente_formatada->addDays(5) ||
-					$q->data_obito_formatada >= $unica->data_acidente_formatada->subDays(5);
-				}
-			})
-			->first();
-			if(!empty($buscaEtapa)){
-				//possivel par 90
-				return ['idUploadSIM'=>$buscaEtapa->id,'Score' => 90];
-			}
-			$buscaEtapa = $buscaNome
-			->filter(function($q) use ($unica) {
-				if(!empty($unica->data_nascimento_formatada) && $unica->DataNascimento != '99/99/9999'){
-					return $q->data_nascimento_formatada <= $unica->data_nascimento_formatada->addDays(5) ||
-					$q->data_nascimento_formatada >= $unica->data_nascimento_formatada->subDays(5);
-				}
-			})
-			->first();
+			// $buscaEtapa = $buscaNome
+			// ->filter(function($q) use ($unica) {
+			// 	if(!empty($unica->data_nascimento_formatada) && $unica->DataNascimento != '99/99/9999'){
+			// 		return $q->data_nascimento_formatada <= $unica->data_nascimento_formatada->addDays(5) ||
+			// 		$q->data_nascimento_formatada >= $unica->data_nascimento_formatada->subDays(5);
+			// 	}
+			// })
+			// ->filter(function($q) use ($unica) {
+			// 	if(!empty($unica->data_acidente_formatada) && $unica->DataNascimento != '99/99/9999'){
+			// 		return $q->data_obito_formatada <= $unica->data_acidente_formatada->addDays(5) ||
+			// 		$q->data_obito_formatada >= $unica->data_acidente_formatada->subDays(5);
+			// 	}
+			// })
+			// ->first();
+			// if(!empty($buscaEtapa)){
+			// 	//possivel par 90
+			// 	return ['idUploadSIM'=>$buscaEtapa->id,'Score' => 90];
+			// }
+			// $buscaEtapa = $buscaNome
+			// ->filter(function($q) use ($unica) {
+			// 	if(!empty($unica->data_acidente_formatada) && $unica->DataNascimento != '99/99/9999'){
+			// 		return $q->data_obito_formatada <= $unica->data_acidente_formatada->addDays(5) ||
+			// 		$q->data_obito_formatada >= $unica->data_acidente_formatada->subDays(5);
+			// 	}
+			// })
+			// ->first();
+			// if(!empty($buscaEtapa)){
+			// 	//possivel par 90
+			// 	return ['idUploadSIM'=>$buscaEtapa->id,'Score' => 90];
+			// }
+			// $buscaEtapa = $buscaNome
+			// ->filter(function($q) use ($unica) {
+			// 	if(!empty($unica->data_nascimento_formatada) && $unica->DataNascimento != '99/99/9999'){
+			// 		return $q->data_nascimento_formatada <= $unica->data_nascimento_formatada->addDays(5) ||
+			// 		$q->data_nascimento_formatada >= $unica->data_nascimento_formatada->subDays(5);
+			// 	}
+			// })
+			// ->first();
 			if(!empty($buscaEtapa)){
 				//possivel par 90
 				return ['idUploadSIM'=>$buscaEtapa->id,'Score' => 90];
@@ -697,20 +708,32 @@ public function linkagem(){
 		$this->processo->Status = 3;
 		$this->processo->Log = "Erro ao processar SIM";
 		$this->processo->save();
+		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+		DB::table('upload_sim')
+		->where('Ano',$this->dataImport['Ano'])
+		->where('CodCidade',$this->dataImport['CodCidade'])
+		->where('Trimestre',$this->dataImport['Trimestre'])
+		->delete();
+		DB::table('linkagem_sim')
+		->where('Ano',$this->dataImport['Ano'])
+		->where('CodCidade',$this->dataImport['CodCidade'])
+		->where('Trimestre',$this->dataImport['Trimestre'])
+		->delete();
+		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 		\Log::alert('Erro ao importar geral SIM : '.$exception->getMessage());
-		OneSignal::sendNotificationUsingTags(
-			"O processo do SIM ".$this->processo->id." terminou com erro",
-			array(
-				["field" => "tag",
-				"key" => "user_id",
-				"relation" => "=", 
-				"value" => $this->user->id]
-			),
-			$url = null,
-			$data = null,
-			$buttons = null,
-			$schedule = null
-		);
+		// OneSignal::sendNotificationUsingTags(
+		// 	"O processo do SIM ".$this->processo->id." terminou com erro",
+		// 	array(
+		// 		["field" => "tag",
+		// 		"key" => "user_id",
+		// 		"relation" => "=", 
+		// 		"value" => $this->user->id]
+		// 	),
+		// 	$url = null,
+		// 	$data = null,
+		// 	$buttons = null,
+		// 	$schedule = null
+		// );
 	}
 
 }

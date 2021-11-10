@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable implements Auditable
 {
-   use \OwenIt\Auditing\Auditable;
-   use Notifiable;
-   use SoftDeletes;
+ use \OwenIt\Auditing\Auditable;
+ use Notifiable;
+ use SoftDeletes;
 
 
     /**
@@ -43,7 +43,12 @@ class User extends Authenticatable implements Auditable
     {
         return (!empty($value) ? \Carbon\Carbon::parse($value)->format('d/m/Y') : null);
     }
-
-
-
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtolower($value);
+    }
+    public function getEmailAttribute($value)
+    {
+        return strtolower($value);
+    }
 }

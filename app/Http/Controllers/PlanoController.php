@@ -140,6 +140,32 @@ class PlanoController extends Controller
 		return response()->json(['error'=> 'Erro ao remover']);
 
 	}	
+	public function removerProjetoPrograma(Request $request)
+	{
+		//validação permissão
+		if(Auth::user()->tipo == 1){
+			$CodCidade = $request->CodCidade;
+		}elseif(Auth::user()->tipo == 2){
+			$cidade = Cidades::find($request->CodCidade);
+			if($cidade->uf != Auth::user()->cidade->uf){
+				return response()->json(['error'=> 'sem permissão']);
+			}	
+			$CodCidade = $cidade->codigo;	
+		}else{
+			$CodCidade = Auth::user()->CodCidade;	
+		}
+		if(empty($CodCidade) || empty($request->Ano)){
+			return response()->json(['error'=> 'sem resultado']);
+		}
+		if(isset($request['idProjeto']) && isset($request['idPlano'])){
+			DB::table('projeto_plano')
+			->where('idPlano',$request['idPlano'])
+			->where('idProjeto',$request['idProjeto'])->delete();	
+			return response()->json(['sucess'=>'removido']);
+		}
+		return response()->json(['error'=> 'Erro ao remover']);
+
+	}	
 	public function removerPlano(Request $request)
 	{
 		//validação permissão

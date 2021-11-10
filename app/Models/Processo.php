@@ -12,8 +12,13 @@ class Processo extends Model
 	];
 	protected $table = 'processos';
 	public $timestamps = true;
+
 	public function cidade()
 	{
 		return $this->HasOne(Cidades::class, 'codigo', 'CodCidade');
+	}	
+	public function user()
+	{
+		return $this->HasOne(User::class, 'id', 'user_id');
 	}
 }

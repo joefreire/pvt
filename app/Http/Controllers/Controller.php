@@ -131,10 +131,12 @@ class Controller extends BaseController
 		});
 
 
-		$fatores = $vitimas
-		->select('vitimas_quadro_multiplo.*')
-		->leftJoin('fatores_risco_quadro_multiplo', 'fatores_risco_quadro_multiplo.idQuadroMultiplo', '=', 'vitimas_quadro_multiplo.idQuadroMultiplo')
-		->whereHas('Fatores');
+		$fatores = DB::table('fatores_risco_quadro_multiplo')
+		->leftJoin('vitimas_quadro_multiplo', 'fatores_risco_quadro_multiplo.idQuadroMultiplo', '=', 'vitimas_quadro_multiplo.idQuadroMultiplo')
+		->where('vitimas_quadro_multiplo.Ano',$request->Ano)	
+		->where('vitimas_quadro_multiplo.CodCidade',$CodCidade)
+		->where('vitimas_quadro_multiplo.Trimestre',$request->Trimestre);
+
 		$absoluto = $simResto->count() + $vitimasNaoLinkadas->count() +$vitimasLinkagem->count();		
 		$absoluto_linkagem = $vitimasLinkagem->count();
 		$residentes_linkagem = $vitimasLinkagem->where('MunicipioVitima', $cidade->municipio)->count();
@@ -222,16 +224,24 @@ class Controller extends BaseController
 		$implantacao = Implantacao::where('CodCidade',$municipio)
 		->where('Ano',$ano)
 		->orderBy('id','desc')->first();
+		$instituicoesImplantacao = Instituicoes::where('CodCidade',$municipio)
+		->where('Ano',$ano)
+		->where('TABELA', 'IMPLANTACAO')->get();
+
 		$qualidade = Qualidade::where('CodCidade',$municipio)
 		->where('Ano',$ano)
 		->orderBy('id','desc')->first();
+		$instituicoesQualidade = Instituicoes::where('CodCidade',$municipio)
+		->where('Ano',$ano)
+		->where('TABELA', 'QUALIDADE')->get();
+
 		$analise = Analise::where('CodCidade',$municipio)
 		->where('Ano',$ano)
 		->orderBy('id','desc')->first();
-		$acoes = Analise::where('CodCidade',$municipio)
+		$acoes = Acoes::where('CodCidade',$municipio)
 		->where('Ano',$ano)
 		->orderBy('id','desc')->first();
-		$monitoramento = Analise::where('CodCidade',$municipio)
+		$monitoramento = Monitoramento::where('CodCidade',$municipio)
 		->where('Ano',$ano)
 		->orderBy('id','desc')->first();
 		$coordenadores = Coordenadores::where('CodCidade',$municipio)
@@ -264,11 +274,23 @@ class Controller extends BaseController
 			$qualidadeNovo = $qualidade->replicate();
 			$qualidadeNovo->Ano = $request['Ano'];
 			$qualidadeNovo->save();
+			foreach($instituicoesQualidade as $instituicao){
+				$instituicoesQualidadeNovo = $instituicao->replicate();
+				$instituicoesQualidadeNovo->Ano = $request['Ano'];
+				$instituicoesQualidadeNovo->idSalva = $qualidadeNovo->id;
+				$instituicoesQualidadeNovo->save();
+			}
 		}
 		if(!empty($implantacao)){			
 			$implantacaoNovo = $implantacao->replicate();
 			$implantacaoNovo->Ano = $request['Ano'];
 			$implantacaoNovo->save();
+			foreach($instituicoesImplantacao as $instituicaoImplantacao){
+				$instituicaoImplantacaoNovo = $instituicaoImplantacao->replicate();
+				$instituicaoImplantacaoNovo->Ano = $request['Ano'];
+				$instituicaoImplantacaoNovo->idSalva = $implantacaoNovo->id;
+				$instituicaoImplantacaoNovo->save();
+			}
 		}
 		return "OK";
 
@@ -482,7 +504,7 @@ class Controller extends BaseController
 		$QUALIDADE->Ano = $request['Ano']; 
 		$QUALIDADE->UPDECRETOCOMISSAO = $UPDECRETOCOMISSAO; 
 		$QUALIDADE->DTCOMISSAO = $DTCOMISSAO;
-		$QUALIDADE->NCOMISSAO = $NCOMISSAO;
+		$QUALIDADE->NCOMISSAO = substr($NCOMISSAO,0,254);
 		$QUALIDADE->COMISSAODOC = $COMISSAODOC;
 		$QUALIDADE->COMISSAOFORM = $COMISSAOFORM;
 		$QUALIDADE->COMISSAOGD = $COMISSAOGD;
@@ -795,6 +817,9 @@ class Controller extends BaseController
 					$PRINCIPAISFATORESCHAVE = $value; 
 				}else{
 					$PRINCIPAISFATORESCHAVE = $PRINCIPAISFATORESCHAVE.",".$value;  
+				}
+				if ($value == 'OUTRO'){
+					$PRINCIPAISFATORESCHAVE.=",".filter_input(INPUT_POST, 'PRINCIPAISFATORESCHAVE_OUTRO', FILTER_SANITIZE_STRING, FILTER_FLAG_NO_ENCODE_QUOTES); 
 				}
 
 			}
@@ -2464,6 +2489,9 @@ class Controller extends BaseController
 
 
 		$i = 0;
+		if(!isset($result)){
+			\Log::error($request->all());
+		}
 		if (isset($result) && !empty($result) && is_array($result) || is_object($result)) {
 
 			echo '<table id="table_resultados" class="table table-bordered table-hover">

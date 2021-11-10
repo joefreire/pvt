@@ -28,7 +28,7 @@ class Instituicoes extends Model implements Auditable
 		'user_id',
 		'created_at',
 		'updated_at',
-		'tabela',
+		'TABELA',
 		'id',
 	];
 	public function filterFields()
